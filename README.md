@@ -2,6 +2,8 @@
 
 Designed and developed by Brenton Trebilcock.
 
+Located at: https://scamsentry.netlify.app/
+
 ## Description
 
 This project will be a website for helping users to protect themselves against being scammed. This will be accomplished through two methods: education and tools. The education part will consist of articles for the users to become familiar with different types of scams and how to identify them. The tools part of the site will include various tools to help the user to know if something is a scam or not. The overall mission of the site is to help users to know when to suspect if something is a scam, detect that it is a scam (with their new knowledge and access to the sites tools), and protect themselves and others against scams.

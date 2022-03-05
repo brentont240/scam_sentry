@@ -1,0 +1,48 @@
+{
+    "List": [
+      {
+        "Id": 0,
+        "Name": "Scam Email Detector",
+        "Icon": "envelope",
+        "Description": "Here is a description of tool 1. Here is a description of tool 1.",
+        "BodyText": "",
+        "Url": "email-detector",
+        "InputFieldType": "",
+        "InputPlaceholderText": "",
+        "InputType": ""
+      },
+      {
+        "Id": 1,
+        "Name": "Phising / Fraudulent Website Detector",
+        "Icon": "globe",
+        "Description": "Here is a description of tool 2. Here is a description of tool 2.",
+        "BodyText": "",
+        "Url": "website-detector",
+        "InputFieldType": "",
+        "InputPlaceholderText": "",
+        "InputType": ""
+      },
+      {
+        "Id": 2,
+        "Name": "Scam Phone Number Detector",
+        "Icon": "phone",
+        "Description": "Here is a description of tool 3. Here is a description of tool 3.",
+        "BodyText": "",
+        "Url": "phone-detector",
+        "InputFieldType": "",
+        "InputPlaceholderText": "",
+        "InputType": ""
+      },
+      {
+        "Id": 3,
+        "Name": "Fake Guru / Get Rich Quick Scheme Detector",
+        "Icon": "business",
+        "Description": "Here is a description of tool 4. Here is a description of tool 4.",
+        "BodyText": "",
+        "Url": "scheme-detector",
+        "InputFieldType": "",
+        "InputPlaceholderText": "",
+        "InputType": ""
+      }
+    ]
+  }

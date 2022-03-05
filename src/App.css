@@ -1,38 +1,108 @@
-.App {
-  text-align: center;
+:root {
+  /* colors */
+  --primary-color: #41729f;
+  --secondary-color: #274472;
+  --tertiary-color: #b7d1e2;
+  --light-grey: #d0d0d0;
+  --dark-grey: #303030;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  /* margin: 0; */
+  color: var(--dark-grey);
+  /* this is to help to get the footer to always stick to the bottom of the page */
+  min-height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+}
+
+main {
+  margin-top: 60px;
+  /* makes the footer stick to the bottom */
+  min-height: calc(100vh - 80px);
+  flex: 1;
+}
+.navbar {
+  background-color: var(--primary-color);
+}
+
+.home-hero {
+  height: 60vh;
+  min-height: 450px;
+
+  /* TODO: make this look really good (maybe use a grid??) */
+  /* adds knight image with gradient */
+  background: url("./images/knight-384-outline-gray.png") 50% 50% no-repeat,
+    linear-gradient(180deg, var(--primary-color) 0%, var(--tertiary-color) 100%);
+  background-position: right bottom;
+  background-size: auto;
+
+  /* FIXME: On smaller screens we can hide the knight image, so that it looks better !!! (or move it)*/
+
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-content: center;
+  flex-direction: column;
+}
+
+/* remove the knight image on smaller screens */
+@media only screen and (max-width: 1150px) {
+  .home-hero{
+    background: var(--primary-color);  
+    background: linear-gradient(180deg, var(--primary-color) 0%, var(--tertiary-color) 100%);
+  }
+}
+
+.p-color {
+  color: var(--primary-color);
+}
+
+.s-color {
+  color: var(--secondary-color);
+}
+
+.t-color {
+  color: var(--tertiary-color);
+}
+
+/* use a different color for the footer? */
+footer {
+  background-color: var(--dark-grey);
   color: white;
+  margin-top: auto;
+  padding-bottom: 1rem;
+  padding-top: 1.5rem;
 }
 
-.App-link {
-  color: #61dafb;
+footer a{
+  color: white;
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+footer a:hover{
+  color: var(--primary-color);
+}
+
+/* FIXME: make this look good */
+/* TODO: MAKE IT SO THAT THE NEXT LINE DOESNT START IN THE CENTER */
+.tools{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.tool-card{
+  width: 20rem;
+  /* margin-left: 20px; */
+}
+
+.tool-icon{
+  padding-bottom: 5px;
 }

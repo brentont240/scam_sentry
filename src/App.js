@@ -16,7 +16,7 @@ import PageNotFound from "./pages/PageNotFound";
 // TODO: HOST THE FRONT AND BACKEND ON DIFFERENT THINGS (BACKEND ON HEROKU AND MAYBE GITHUB PAGES OR NETLIFY FOR FRONT END)
 function App() {
   return (
-    <Router basename="/scam-sentry">
+    <Router>
       <NavBar />
       {/* TODO: MAKE SURE TO MEET ALL OF THE REQUIREMENTS THAT I HAVE SET UP!!! */}
       {/* follow the back end video when setting up the backend!!! */}
@@ -26,7 +26,7 @@ function App() {
           <Route path="/articles-list" element={<ArticlesListPage />} />
           <Route path="/tools-list" element={<ToolsListPage />} />
           <Route path="/tools/:url" element={<ToolsPage />} />
-          <Route path="/*" element={<PageNotFound />}/> {/* use path="*" to catch any page that is not specified!*/}
+          <Route path="*" element={<PageNotFound />}/> {/* use path="*" to catch any page that is not specified!*/}
         </Routes>
       </main>
       <Footer />

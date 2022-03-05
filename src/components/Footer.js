@@ -1,5 +1,5 @@
 import React from "react";
-import knight from '../images/knight.png'
+// import knight from '../images/knight.png'
 
 const Footer = () => (
   // TODO: make this look better!

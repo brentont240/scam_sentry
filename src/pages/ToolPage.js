@@ -12,7 +12,7 @@ const ToolsPage = () => {
     return (
        <div className="container">
         <h1 className="pt-3">{tool.Name}</h1>
-            <form action="http://localhost:8000/email-detector" method="POST">
+            <form action="https://scam-sentry-backend.herokuapp.com/email-detector" method="POST">
             <textarea name="input" id="input" cols="30" rows="10"></textarea>
             <button type="submit" className="btn">Check</button>
             </form>

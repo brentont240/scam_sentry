@@ -12,6 +12,8 @@ import PageNotFound from "./pages/PageNotFound";
 // Do I want to make the tool pages dynamic (have 1 page and then change it depending on what tool is used?) 
 
 
+// FIXME: FIX IT SO THE 404 PAGE SHOWS UP ON NETLIFY AND THAT IT DOESN'T MESS UP WHEN REFRESHED!!!!
+
 // TODO: FRI
 // TODO: HOST THE FRONT AND BACKEND ON DIFFERENT THINGS (BACKEND ON HEROKU AND MAYBE GITHUB PAGES OR NETLIFY FOR FRONT END)
 function App() {

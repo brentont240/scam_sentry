@@ -23,7 +23,7 @@ const ToolsListPage = () => (
                 {/* change the alignment or not? */}
                 {/* FIXME: do some styling (color) changes for the button and center? */}
                 {/* FIXME: change a to a Link */}
-                <Link to={`/tools/${tool.Url}`} className="btn btn-primary">Use Tool</Link>
+                <Link to={`/tools/${tool.Url}`} className="btn button-tools">Use Tool</Link>
             </div>
         </div>
       ))}

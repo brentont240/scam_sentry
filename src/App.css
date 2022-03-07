@@ -5,6 +5,8 @@
   --tertiary-color: #b7d1e2;
   --light-grey: #d0d0d0;
   --dark-grey: #303030;
+  /* alice blue */
+  --light-blue: #f0f8ff;
 }
 
 html {
@@ -106,3 +108,22 @@ footer a:hover{
 .tool-icon{
   padding-bottom: 5px;
 }
+
+.input-field-color{
+  background-color: var(--light-blue);
+}
+
+.email-detector-text-area{
+  width: 100%;
+}
+
+.button-tools{
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.button-tools:hover{
+  background-color: var(--secondary-color);
+  color: white;
+}
+

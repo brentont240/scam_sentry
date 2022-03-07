@@ -2,7 +2,7 @@ import React from "react";
 import Tools from '../data/tools.json'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from "react-router-dom";
-import { faEnvelope, faGlobe, faPhone, faUserTie } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faGlobe, faPhone, faUserTie, faCaretUp } from '@fortawesome/free-solid-svg-icons'
 
 // TODO: maybe add the tools to the toolbar in the header? (want to do that dynamically)
 
@@ -46,6 +46,8 @@ function getIcon(icon){
             return faPhone;
         case 'business':
             return faUserTie;
+        case 'pyramid':
+            return faCaretUp;
         default:
             return;
     }

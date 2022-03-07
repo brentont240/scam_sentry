@@ -98,6 +98,7 @@ footer a:hover{
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  margin-bottom: 20px;
 }
 
 .tool-card{
@@ -108,6 +109,12 @@ footer a:hover{
 .tool-icon{
   padding-bottom: 5px;
 }
+
+/* .center-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
 
 .input-field-color{
   background-color: var(--light-blue);

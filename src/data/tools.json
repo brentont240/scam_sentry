@@ -59,6 +59,18 @@
         "InputPlaceholderText": "",
         "InputType": "",
         "IsExternal": false
+      },
+      {
+        "Id": 4,
+        "Name": "Crypto Scam Detector",
+        "Icon": "bitcoin",
+        "Description": "Description about the tool. Note: Links to an external site.",
+        "BodyText": "",
+        "Url": "https://tokensniffer.com/",
+        "InputFieldType": "",
+        "InputPlaceholderText": "",
+        "InputType": "",
+        "IsExternal": true
       }
     ]
   }

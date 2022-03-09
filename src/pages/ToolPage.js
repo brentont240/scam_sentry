@@ -23,6 +23,7 @@ const ToolsPage = () => {
     return ( 
        <div className="container">
         <h1 className="pt-3">{tool.Name}</h1>
+        <p>{tool.BodyText}</p>
         <section id="results"></section>
             <form>
             {inputAndButton}

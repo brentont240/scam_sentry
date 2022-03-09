@@ -5,7 +5,7 @@
         "Name": "Scam Email Detector",
         "Icon": "envelope",
         "Description": "Here is a description of tool 1. Here is a description of tool 1.",
-        "BodyText": "",
+        "BodyText": "This tool will detect if an email is a scam or not. (put a better description here)",
         "Url": "email-detector",
         "InputFieldType": "",
         "InputPlaceholderText": "Paste the contents of the suspected email here.",

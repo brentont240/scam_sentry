@@ -12,7 +12,7 @@ const ToolsPage = () => {
     let inputAndButton = ``;
     // if using fetch do npm install --save whatwg-fetch so it can work on ie
     if(tool.InputType === "textarea")
-        inputAndButton = <> <textarea name="input" id="input" cols="50" rows="15" className="input-field-color email-detector-text-area" placeholder={tool.InputPlaceholderText} ></textarea> 
+        inputAndButton = <> <textarea name="input" id="input" cols="50" rows="15" className="mt-2 input-field-color email-detector-text-area" placeholder={tool.InputPlaceholderText} ></textarea> 
         <span id="button-section"><button type="button" className="btn button-tools text-field-button" onClick={() => getResult(tool.Id)}>{tool.ButtonText}</button></span> </>;
     else {
         inputAndButton = <div className="input-group">
@@ -57,6 +57,8 @@ const getResult = async (id) => {
     let resultsSection = document.querySelector('#results');
     // if there is no input, show an error message.
     if (input === ""){
+        // scroll to the top, if there is an error
+        window.scrollTo(0, 0,);
         resultsSection.innerHTML = `<div class="alert alert-danger">
         <h1>Error: No input</h1>
         <p>Please enter valid information into the input field below.</p>
@@ -101,7 +103,7 @@ function displayResults(rating){
     // TODO: https://getbootstrap.com/docs/5.0/components/alerts/ LOOK AT ALERT COMPONENTS FOR MORE STYLING IDEAS!!!
     // use icons!!! (maybe use svgs!!!)
     // scroll to the top, before getting results
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0,);
     switch(rating){
         case 3:
             resultsSection.innerHTML = `<div class="alert alert-danger">

@@ -140,6 +140,12 @@ footer a:hover{
   color: white;
 }
 
+.text-field-button{
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+
 @media only screen and (max-width: 600px){
   .text-field-button{
     width: 50%;

@@ -124,6 +124,12 @@ footer a:hover{
   width: 100%;
 }
 
+.tool-spinner{
+  color: var(--secondary-color);
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
 .button-tools{
   background-color: var(--primary-color);
   color: white;
@@ -134,3 +140,13 @@ footer a:hover{
   color: white;
 }
 
+@media only screen and (max-width: 600px){
+  .text-field-button{
+    width: 50%;
+  }
+  #button-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

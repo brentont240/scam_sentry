@@ -41,6 +41,8 @@ const ToolsPage = () => {
     );
 };
 
+// TODO: in the website detector say that they can go to the guru detector to see if a website is a get rich quick scheme website
+
 const getResult = async (id) => {
     // TODO: maybe reset the results section when the button is click, so the user knows that the results will be for the new input!!!
     const input = document.querySelector("#input").value;
@@ -98,6 +100,7 @@ function displayResults(rating){
     let resultsSection = document.querySelector('#results');
     // TODO: https://getbootstrap.com/docs/5.0/components/alerts/ LOOK AT ALERT COMPONENTS FOR MORE STYLING IDEAS!!!
     // use icons!!! (maybe use svgs!!!)
+    resultsSection.scrollIntoView();
     switch(rating){
         case 3:
             resultsSection.innerHTML = `<div class="alert alert-danger">

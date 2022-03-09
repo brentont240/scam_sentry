@@ -8,20 +8,22 @@
         "BodyText": "",
         "Url": "email-detector",
         "InputFieldType": "",
-        "InputPlaceholderText": "",
-        "InputType": "",
+        "InputPlaceholderText": "Paste the contents of the suspected email here.",
+        "InputType": "textarea",
+        "ButtonText": "Check Email",
         "IsExternal": false
       },
       {
         "Id": 1,
-        "Name": "Phising / Fraudulent Website Detector",
+        "Name": "Scam Website Detector",
         "Icon": "globe",
-        "Description": "Here is a description of tool 2. Here is a description of tool 2.",
+        "Description": "This tool detects if a suspicious website is a fraudulent or a phising website.",
         "BodyText": "",
         "Url": "website-detector",
         "InputFieldType": "",
-        "InputPlaceholderText": "",
-        "InputType": "",
+        "InputPlaceholderText": "Enter the url of a website",
+        "InputType": "text",
+        "ButtonText": "Check Website",
         "IsExternal": false
       },
       {
@@ -34,6 +36,7 @@
         "InputFieldType": "",
         "InputPlaceholderText": "",
         "InputType": "",
+        "ButtonText": "Check Phone Number",
         "IsExternal": false
       },
       {
@@ -45,7 +48,8 @@
         "Url": "scheme-detector",
         "InputFieldType": "",
         "InputPlaceholderText": "",
-        "InputType": "",
+        "InputType": "text",
+        "ButtonText": "Check",
         "IsExternal": false
       },
       {
@@ -57,7 +61,8 @@
         "Url": "mlm-detector",
         "InputFieldType": "",
         "InputPlaceholderText": "",
-        "InputType": "",
+        "InputType": "text",
+        "ButtonText": "Check",
         "IsExternal": false
       },
       {
@@ -70,6 +75,7 @@
         "InputFieldType": "",
         "InputPlaceholderText": "",
         "InputType": "",
+        "ButtonText": "",
         "IsExternal": true
       }
     ]

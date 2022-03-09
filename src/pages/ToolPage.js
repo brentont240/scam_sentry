@@ -100,7 +100,8 @@ function displayResults(rating){
     let resultsSection = document.querySelector('#results');
     // TODO: https://getbootstrap.com/docs/5.0/components/alerts/ LOOK AT ALERT COMPONENTS FOR MORE STYLING IDEAS!!!
     // use icons!!! (maybe use svgs!!!)
-    resultsSection.scrollIntoView();
+    // scroll to the top, before getting results
+    window.scrollTo(0, 0);
     switch(rating){
         case 3:
             resultsSection.innerHTML = `<div class="alert alert-danger">

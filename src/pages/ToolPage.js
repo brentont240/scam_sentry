@@ -76,10 +76,16 @@ const getResult = async (id) => {
         body: JSON.stringify({input: input})
     }
     // TODO: Change the backend link based on the id that is put into here!
-    const result = await fetch('https://scam-sentry-backend.herokuapp.com/email-detector', options);       
-    const rating = await result.json();
+    let getAPI ="";
+    if(id===0){
+        getAPI = await fetch('https://scam-sentry-backend.herokuapp.com/email-detector', options);    
+    } else if(id===3){
+        getAPI = await fetch('https://scam-sentry-backend.herokuapp.com/guru-detector', options); 
+    }
+    const rating = await getAPI.json();
     // TODO: FIXME: use rating.isShort to see if the email is short or not!!!
     console.log(rating.rating);
+    console.log(rating);
     // TODO: implement the use short if the rating is 0 or 1!!!
     console.log(rating.isShort);
     displayResults(rating.rating);

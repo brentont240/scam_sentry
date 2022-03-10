@@ -46,8 +46,12 @@ const NavBar = () => (
 
 // closes the hamburger menu when a link is clicked
 function closeMenu(){
-  const navbarToggler = document.querySelector('.navbar-toggler-icon');
-  navbarToggler.click();
+  const screensize = window.innerWidth;
+  if(screensize < 992){
+    const navbarToggler = document.querySelector('.navbar-toggler-icon');
+    navbarToggler.click();
+  }
+  else return;
 }
 
 

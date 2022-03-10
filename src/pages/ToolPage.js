@@ -69,7 +69,8 @@ const getResult = async (id) => {
 
     // shows that the results are loading TODO: work on making this look better (see bootstrap spinners for help)
     // FIXME: is this good when it is centered aligned or should i do something else? should I use a different loading spinner?
-    resultsSection.innerHTML = `<div class="text-center"> <div class="spinner-border tool-spinner" role="status">
+    resultsSection.innerHTML = `<div class="text-center"> 
+    <div class="spinner-border tool-spinner" role="status">
      <span class="visually-hidden">Loading...</span>
     </div></div>`;
     const options = {

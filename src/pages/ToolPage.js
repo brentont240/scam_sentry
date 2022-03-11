@@ -86,12 +86,12 @@ const getResult = async (id) => {
     if(id===0){
         // email
         getAPI = await fetch('https://scam-sentry-backend.herokuapp.com/email-detector', options);
-        const rating = await getAPI.json();
+        const results = await getAPI.json();
         // TODO: FIXME: use rating.isShort to see if the email is short or not!!!
     
         // TODO:  implement the use short if the rating is 0 or 1!!!
-        console.log(rating.isShort);
-        displayResults(rating.rating, id);    
+        console.log(results.isShort);
+        displayResults(results, id);    
     } else if(id===1){
         // website
         // getAPI = await fetch
@@ -115,7 +115,6 @@ function displayResults(results, id){
     // use icons!!! (maybe use svgs!!!)
     // scroll to the top, before getting results
     window.scrollTo(0, 0,);
-    // TODO: FIXME: use rating.isShort to see if the email is short or not!!!
     switch(id){
         case 3:
             return guruResults(results, resultsSection);
@@ -124,20 +123,20 @@ function displayResults(results, id){
             <h1>Oops, this is not set up yet</h1>
             </div>`;
             return;
-            // TODO: implement the use short if the rating is 0 or 1!!!
         case 1:
             resultsSection.innerHTML = `<div class="alert alert-warning">
             <h2>Possible scam detected</h2>
             </div>`;
             return;
-            // TODO: implement the use short if the rating is 0 or 1!!!
         default:
             return emailResults(results, resultsSection);
     }
 }
 
 
-function emailResults(rating, resultsSection){
+function emailResults(results, resultsSection){
+    const rating = results.rating;
+    const isShort = results.isShort;
     switch(rating){
         case 3:
             resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
@@ -150,17 +149,32 @@ function emailResults(rating, resultsSection){
             <h1>Scam detected!</h1>
             </div>`;
             return;
-            // TODO: implement the use short if the rating is 0 or 1!!!
+         // TODO: implement the use short if the rating is 0 or 1!!!
         case 1:
+            if(!isShort){
             resultsSection.innerHTML = `<div class="alert alert-warning" role="alert">
             <h2>Possible scam detected</h2>
             </div>`;
             return;
-            // TODO: implement the use short if the rating is 0 or 1!!!
+        } else{
+            resultsSection.innerHTML = `<div class="alert alert-warning" role="alert">
+            <h2>Possible scam detected</h2>
+            <p>This is email is short ... (put something about short emails here)</p>
+            </div>`;
+            return;
+        }
+        // TODO: implement the use short if the rating is 0 or 1!!!
         default:
+            if(!isShort){
             resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
             <h2>No scam detected</h2>
             </div>`;
+            } else{
+            resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
+            <h2>No scam detected</h2>
+            <p>This is email is short ... (put something about short emails here)</p>
+            </div>`;
+            }
     }
 }
 

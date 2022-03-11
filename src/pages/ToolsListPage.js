@@ -10,7 +10,10 @@ import { faEnvelope, faGlobe, faPhone, faUserTie, faBitcoinSign, faArrowRight, f
 const ToolsListPage = () => (
     <div className="container">
       {/* TODO: make these look much better!!! */}
+    {/* FIXME: should this title be centered? */}
       <h1 className="pt-3">Tools</h1>
+
+ 
       {/* put some information about the tools here? */}
       <div className="tools mt-4">
       {Tools.List.map((tool, key) =>(

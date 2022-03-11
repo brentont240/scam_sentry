@@ -10,7 +10,7 @@
         "InputFieldType": "",
         "InputPlaceholderText": "Paste the contents of the suspected email here.",
         "InputType": "textarea",
-        "ButtonText": "Check Email",
+        "ButtonText": "Scan Email",
         "IsExternal": false
       },
       {
@@ -23,7 +23,7 @@
         "InputFieldType": "",
         "InputPlaceholderText": "Enter the url of a website",
         "InputType": "text",
-        "ButtonText": "Check Website",
+        "ButtonText": "Scan Website",
         "IsExternal": false
       },
       {
@@ -36,7 +36,7 @@
         "InputFieldType": "",
         "InputPlaceholderText": "",
         "InputType": "",
-        "ButtonText": "Check Phone Number",
+        "ButtonText": "Scan Number",
         "IsExternal": false
       },
       {

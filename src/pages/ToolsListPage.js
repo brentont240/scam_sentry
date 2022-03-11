@@ -2,7 +2,7 @@ import React from "react";
 import Tools from '../data/tools.json'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from "react-router-dom";
-import { faEnvelope, faGlobe, faPhone, faUserTie, faCaretUp, faBitcoinSign } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faGlobe, faPhone, faUserTie, faBitcoinSign, faArrowRight, faArrowUpRightFromSquare, faSquareCaretUp} from '@fortawesome/free-solid-svg-icons'
 
 // TODO: maybe add the tools to the toolbar in the header? (want to do that dynamically)
 
@@ -19,12 +19,15 @@ const ToolsListPage = () => (
             <div className="text-center tool-icon">
             <FontAwesomeIcon icon={getIcon(tool.Icon)} className="fa-3x"/>
             </div>
-                <h5 className="card-title text-center">{tool.Name}</h5>
+                <h5 className="card-title text-center s-color">{tool.Name}</h5>
                 <p className="card-text">{tool.Description}</p>
                 {/* change the alignment or not? */}
                 {/* FIXME: do some styling (color) changes for the button and center? */}
                 {/* FIXME: change a to a Link */}
-                <Link to={`/tools/${tool.Url}`} className="btn button-tools">Use Tool</Link>
+                {/* this makes the button go to the bottom of the card */}
+                <div className="mt-auto d-flex flex-row justify-content-center">
+                <Link to={`/tools/${tool.Url}`} className="btn button-tools button-tools-list">Use Tool <FontAwesomeIcon icon={getButtonIcon(tool.IsExternal)} /></Link>
+                </div>
             </div>
         </div>
       ))}
@@ -48,11 +51,20 @@ function getIcon(icon){
         case 'business':
             return faUserTie;
         case 'pyramid':
-            return faCaretUp;
+            return faSquareCaretUp;
         case 'bitcoin':
             return faBitcoinSign;
         default:
             return;
+    }
+}
+
+function getButtonIcon(isExternal){
+    switch(isExternal){
+        case true:
+            return faArrowUpRightFromSquare;
+        default:
+            return faArrowRight;
     }
 }
 

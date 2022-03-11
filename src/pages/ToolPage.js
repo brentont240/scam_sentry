@@ -15,14 +15,14 @@ const ToolsPage = () => {
         inputAndButton = <> <textarea name="input" id="input" cols="50" rows="15" className="mt-2 input-field-color email-detector-text-area" placeholder={tool.InputPlaceholderText} ></textarea> 
         <span id="button-section"><button type="button" className="btn button-tools text-field-button" onClick={() => getResult(tool.Id)}>{tool.ButtonText}</button></span> </>;
     else {
-        inputAndButton = <div className="input-group">
+        inputAndButton = <div className="input-group my-4">
         <input name="input" id="input" type={tool.InputType} className="input-field-color input-text form-control" placeholder={tool.InputPlaceholderText} />
         <button type="button" className="btn button-tools"  onClick={() => getResult(tool.Id)}>{tool.ButtonText}</button>
         </div>;
     }
     return ( 
        <div className="container">
-        <h1 className="pt-3">{tool.Name}</h1>
+        <h1 className="pt-4">{tool.Name}</h1>
         <p>{tool.BodyText}</p>
         <section id="results"></section>
             <form>
@@ -76,29 +76,38 @@ const getResult = async (id) => {
     const options = {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'Content-Type': 'application/json'
+            // 'Accept': 'application/json'
         },
         body: JSON.stringify({input: input})
     }
     // TODO: Change the backend link based on the id that is put into here!
     let getAPI ="";
     if(id===0){
-        getAPI = await fetch('https://scam-sentry-backend.herokuapp.com/email-detector', options);    
+        // email
+        getAPI = await fetch('https://scam-sentry-backend.herokuapp.com/email-detector', options);
+        const rating = await getAPI.json();
+        // TODO: FIXME: use rating.isShort to see if the email is short or not!!!
+    
+        // TODO:  implement the use short if the rating is 0 or 1!!!
+        console.log(rating.isShort);
+        displayResults(rating.rating, id);    
+    } else if(id===1){
+        // website
+        // getAPI = await fetch
+    } else if(id===2){ 
+        // phone
+        // getAPI = await fetch
     } else if(id===3){
+        // guru
         getAPI = await fetch('https://scam-sentry-backend.herokuapp.com/guru-detector', options); 
+        const results = await getAPI.json();
+        displayResults(results, id);  
     }
-    const rating = await getAPI.json();
-    // TODO: FIXME: use rating.isShort to see if the email is short or not!!!
-    console.log(rating.rating);
-    console.log(rating);
-    // TODO: implement the use short if the rating is 0 or 1!!!
-    console.log(rating.isShort);
-    displayResults(rating.rating);
-    // button.innerHTML = buttonBefore;
+
 };
 
-function displayResults(rating){
+function displayResults(results, id){
     // TODO: maybe use an icon with these
     // &#9888 = warning icon!
     let resultsSection = document.querySelector('#results');
@@ -106,16 +115,13 @@ function displayResults(rating){
     // use icons!!! (maybe use svgs!!!)
     // scroll to the top, before getting results
     window.scrollTo(0, 0,);
-    switch(rating){
+    // TODO: FIXME: use rating.isShort to see if the email is short or not!!!
+    switch(id){
         case 3:
-            resultsSection.innerHTML = `<div class="alert alert-danger">
-            <h1>Scam detected!</h1>
-            <p>This email is definitely a scam</p>
-            </div>`;
-            return;
+            return guruResults(results, resultsSection);
         case 2:
             resultsSection.innerHTML = `<div class="alert alert-danger">
-            <h1>Scam detected!</h1>
+            <h1>Oops, this is not set up yet</h1>
             </div>`;
             return;
             // TODO: implement the use short if the rating is 0 or 1!!!
@@ -126,9 +132,58 @@ function displayResults(rating){
             return;
             // TODO: implement the use short if the rating is 0 or 1!!!
         default:
+            return emailResults(results, resultsSection);
+    }
+}
+
+
+function emailResults(rating, resultsSection){
+    switch(rating){
+        case 3:
+            resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
+            <h1>Scam detected!</h1>
+            <p>This email is definitely a scam</p>
+            </div>`;
+            return;
+        case 2:
+            resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
+            <h1>Scam detected!</h1>
+            </div>`;
+            return;
+            // TODO: implement the use short if the rating is 0 or 1!!!
+        case 1:
+            resultsSection.innerHTML = `<div class="alert alert-warning" role="alert">
+            <h2>Possible scam detected</h2>
+            </div>`;
+            return;
+            // TODO: implement the use short if the rating is 0 or 1!!!
+        default:
             resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
             <h2>No scam detected</h2>
             </div>`;
+    }
+}
+
+// TODO: NEED TO ADD MORE GURUS / SITES TO THE DATABASE
+function guruResults(results, resultsSection){
+    const matchFound = results.matchFound;
+    const websiteMatch = results.websiteMatch;
+    const guruMatch = results.guruMatch;
+    if (!matchFound || (websiteMatch == null && guruMatch == null)){
+        resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
+        <h2>No known fake guru or fake guru related website detected</h2>
+        </div>`;
+        return;
+    } else if(guruMatch != null){
+        resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
+        <h2>Fake guru detected!</h2>
+        <p><b>${guruMatch}</b> is a known fake guru.</p>
+        </div>`;
+    } else {     
+        resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
+        <h2>Get rich quick scheme website detected!</h2>
+        <p><b>${websiteMatch}</b> is a get rich quick scheme website.</p>
+        </div>`;
     }
 }
 

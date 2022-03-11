@@ -140,11 +140,29 @@ footer a:hover{
   color: white;
 }
 
+.button-tools-list{  
+  width: 50%;
+  /* for hover effect */
+  box-shadow: inset 0 0 0 0 var(--secondary-color);
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+/* fills in the button with color from the right when hovered over */
+.button-tools-list:hover{
+  box-shadow: inset 400px 0 0 0 var(--secondary-color);
+}
+
 .text-field-button{
   margin-top: 5px;
   margin-bottom: 20px;
 }
 
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
 
 @media only screen and (max-width: 600px){
   .text-field-button{

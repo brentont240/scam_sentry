@@ -107,7 +107,7 @@ const getResult = async (id) => {
             body: JSON.stringify({input: input})
         }
         // TODO: undo this when done testing!!!
-        getAPI = await fetch('https://apilayer.net/api/validate?access_key='+PHONE_API_KEY+'&number='+input , phoneOptions)
+        getAPI = await fetch('http://apilayer.net/api/validate?access_key='+PHONE_API_KEY+'&number='+input , phoneOptions)
         const results = await getAPI.json();
         // for testing
         // const results = {
@@ -222,6 +222,11 @@ function guruResults(results, resultsSection){
 // TODO: MAKE IT SO THAT IT AUTO FORMATS THE PHONE NUMBER OR CHECKS IT SO THEY CAN'T UNPUT IT WRONG
 function phoneResults(results, resultsSection){
     console.log(results);   
+    if (results.success === false){
+        resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
+        <h2>Error with phone detector!</h2>
+        </div>`;        
+    }
     if(results.valid === false){
         // TODO: put some instructions here!
         resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">

@@ -21,7 +21,9 @@ const ToolsPage = () => {
         <input name="input" id="input" type={tool.InputType} className="input-field-color input-text form-control" placeholder={tool.InputPlaceholderText} />
         <button type="button" className="btn button-tools"  onClick={() => getResult(tool.Id)}>{tool.ButtonText}</button>
         </div>;
+        
     }
+    console.log(PHONE_API_KEY);
     return ( 
        <div className="container">
         <h1 className="pt-4">{tool.Name}</h1>
@@ -29,10 +31,11 @@ const ToolsPage = () => {
         <section id="results"></section>
             <form>
             {inputAndButton}
+            
             {/* test different button sizes, colors, and other designs */}
             {/* When the page is loading, put a spinner in the button  (bootstap's docs show how to do this)*/}
             {/* <button type="button" className="btn button-tools"  onClick={() => getResult(tool.Id)}>Check</button> */}
-
+            
             {/* use this when it is loading */}
             {/* <button className="btn button-tools" type="button" disabled>
             <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

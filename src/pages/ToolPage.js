@@ -215,8 +215,13 @@ function guruResults(results, resultsSection){
     }
 }
 
+// TODO:
+// TODO: 
+// TODO:
+// TODO:
+// TODO: MAKE IT SO THAT IT AUTO FORMATS THE PHONE NUMBER OR CHECKS IT SO THEY CAN'T UNPUT IT WRONG
 function phoneResults(results, resultsSection){
-    console.log(results.line_type);   
+    console.log(results);   
     if(results.valid === false){
         // TODO: put some instructions here!
         resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">

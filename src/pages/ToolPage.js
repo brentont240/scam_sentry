@@ -4,7 +4,7 @@ import PageNotFound from "./PageNotFound";
 import { useParams } from "react-router-dom";
 
 // FIXME: NEED TO FIX THE CORS ERROR
-const PHONE_KEY = process.env.PHONE_KEY;
+const PHONE_API_KEY = process.env.PHONE_KEY;
 
 const ToolsPage = () => {
     let params = useParams();
@@ -103,7 +103,7 @@ const getResult = async (id) => {
             body: JSON.stringify({input: input})
         }
         // TODO: undo this when done testing!!!
-        getAPI = await fetch('http://apilayer.net/api/validate?access_key='+PHONE_KEY+'&number='+input , phoneOptions)
+        getAPI = await fetch('http://apilayer.net/api/validate?access_key='+PHONE_API_KEY+'&number='+input , phoneOptions)
         const results = await getAPI.json();
         // for testing
         // const results = {

@@ -174,3 +174,9 @@ footer a:hover{
     align-items: center;
   }
 }
+
+
+.hidden{
+  display: none;
+  visibility: hidden;
+}

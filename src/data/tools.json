@@ -31,10 +31,10 @@
         "Name": "Scam Phone Number Detector",
         "Icon": "phone",
         "Description": "Here is a description of tool 3. Here is a description of tool 3.",
-        "BodyText": "",
+        "BodyText": "Maybe put an explanation of how to enter this properly or automatically format it right. NEED TO FINISH THIS, MAKE A FORM FOR WHEN IT MEETS THE REQUIREMENTS !!!!!!!!!! NOTE THE API IS CURRENTLY DISCONNECTED FOR TESTING PURPOSES!!",
         "Url": "phone-detector",
         "InputFieldType": "",
-        "InputPlaceholderText": "",
+        "InputPlaceholderText": "Enter phone number without spaces or dashes (include country code!) ex: 11234567891",
         "InputType": "",
         "ButtonText": "Scan Number",
         "IsExternal": false

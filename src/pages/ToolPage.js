@@ -229,9 +229,9 @@ function phoneResults(results, resultsSection){
         </div>`;
         return;
     }
-
+    const carrier = results.carrier;
     const lineType = results.line_type;
-    if (lineType === 'landline' || lineType === 'toll_free'){
+    if (lineType === 'landline' || lineType === 'toll_free' || carrier === ''){
         resultsSection.innerHTML = 
         `<div class="alert alert-warning" role="alert">
         <h2>Possible scam detected</h2>

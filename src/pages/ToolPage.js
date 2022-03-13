@@ -4,7 +4,7 @@ import PageNotFound from "./PageNotFound";
 import { useParams } from "react-router-dom";
 
 // FIXME: NEED TO FIX THE CORS ERROR
-const PHONE_API_KEY = process.env.PHONE_KEY;
+const PHONE_API_KEY = process.env.REACT_APP_PHONE_KEY;
 
 const ToolsPage = () => {
     let params = useParams();

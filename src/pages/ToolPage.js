@@ -103,12 +103,13 @@ const getResult = async (id) => {
             body: JSON.stringify({input: input})
         }
         // TODO: undo this when done testing!!!
-        // getAPI = await fetch('http://apilayer.net/api/validate?access_key='+PHONE_KEY+'&number='+input , phoneOptions)
-        // const results = await getAPI.json();
-        const results = {
-            "valid": true,
-            "line_type": "toll_free"
-        }
+        getAPI = await fetch('http://apilayer.net/api/validate?access_key='+PHONE_KEY+'&number='+input , phoneOptions)
+        const results = await getAPI.json();
+        // for testing
+        // const results = {
+        //     "valid": true,
+        //     "line_type": "toll_free"
+        // }
         displayResults(results, id);
     } else if(id===3){
         // guru
@@ -282,7 +283,7 @@ function phoneResults(results, resultsSection){
         document
         .querySelector(".phone-form")
         .addEventListener("change", function (e) {
-          if (e.target.classList == "form-check-input") {
+          if (e.target.classList === "form-check-input") {
             showNextPhoneForm(e.target.id, e.target.value, resultsSection);
           }
         });

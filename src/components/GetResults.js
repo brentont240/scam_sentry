@@ -52,17 +52,16 @@ export const getResult = async (id) => {
     } else if(id===1){
         // website
         const websiteOptions = {
-            method: 'POST',
+            method: 'post',
             mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json',
                 'API-Key': URLSCAN_API_KEY
             },
             body: JSON.stringify({"url": input, "visibility": "public"})
         }
         console.log(websiteOptions);
-        getAPI = await fetch('https://urlscan.io/api/v1/scan/', options);
+        getAPI = await fetch('https://urlscan.io/api/v1/scan/', websiteOptions);
         const results = await getAPI.json();
         console.log(results);
     } else if(id===2){ 

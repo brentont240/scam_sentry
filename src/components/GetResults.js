@@ -1,7 +1,7 @@
 const PHONE_API_KEY = process.env.REACT_APP_PHONE_KEY;
 const URLSCAN_API_KEY = process.env.REACT_APP_URLSCAN_KEY;
 // this fixes cors errors
-
+const FIX_CORS = 'https://fix-cors-problems.herokuapp.com/';
 
 // TODO: in the website detector say that they can go to the guru detector to see if a website is a get rich quick scheme website
 
@@ -69,9 +69,14 @@ export const getResult = async (id) => {
         // getAPI = await fetch('https://urlscan.io/api/v1/scan/', websiteOptions);
         // const results = await getAPI.json();
         // console.log(results);
-        fetch('https://fix-cors-problems.herokuapp.com/https://urlscan.io/api/v1/scan/', websiteOptions)
+        // 
+        fetch(FIX_CORS+'https://urlscan.io/api/v1/scan/', websiteOptions)
         .then(response => response.json())
-        .then(response => console.log(response))
+        .then(response =>  { 
+            getAPI = fetch(response.results)
+            .then(response => response.json())
+            .then(console.log(response))
+        })
         .catch(err => console.error(err));
     } else if(id===2){ 
         // phone

@@ -74,8 +74,8 @@ export const getResult = async (id) => {
         .then(response => response.json())
         .then(response =>  {
             console.log(response) 
-            console.log("!results = " + response.results) 
-            fetch(FIX_CORS+response.results)
+            console.log("!results = " + response.result) 
+            fetch(FIX_CORS+response.result)
             .then(results => results.json())
             .then(results => console.log(results))
         })

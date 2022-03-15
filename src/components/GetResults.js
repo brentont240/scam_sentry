@@ -1,5 +1,9 @@
+import { wait } from "@testing-library/user-event/dist/utils";
+
 const PHONE_API_KEY = process.env.REACT_APP_PHONE_KEY;
 const URLSCAN_API_KEY = process.env.REACT_APP_URLSCAN_KEY;
+// this fixes cors errors
+const fix_cors = 'https://fix-cors-problems.herokuapp.com/';
 
 // TODO: in the website detector say that they can go to the guru detector to see if a website is a get rich quick scheme website
 
@@ -51,37 +55,49 @@ export const getResult = async (id) => {
         displayResults(results, id);    
     } else if(id===1){
         // website
+        // TODO: try https://www.virustotal.com/  or https://urlscan.io/ OR ANOTHER THING FROM https://zeltser.com/lookup-malicious-websites/
         const websiteOptions = {
-            method: 'post',
-            mode: 'no-cors',
+            method: 'POST',
+            url: 'https://urlscan.io/api/v1/scan/',
+            // mode: 'no-cors',
             headers: {
+                // 'Accept': '*/*',
                 'Content-Type': 'application/json',
                 'API-Key': URLSCAN_API_KEY
             },
             body: JSON.stringify({"url": input, "visibility": "public"})
         }
         console.log(websiteOptions);
-        getAPI = await fetch('https://urlscan.io/api/v1/scan/', websiteOptions);
-        const results = await getAPI.json();
-        console.log(results);
+        // getAPI = await fetch('https://urlscan.io/api/v1/scan/', websiteOptions);
+        // const results = await getAPI.json();
+        // console.log(results);
+        fetch('https://fix-cors-problems.herokuapp.com/https://urlscan.io/api/v1/scan/', websiteOptions)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
     } else if(id===2){ 
         // phone
         const phoneOptions = {
             method: 'POST',
-            body: JSON.stringify({input: input})
         }
         // TODO: undo this when done testing!!!
-        // TODO: FIX THIS FIXME:
         getAPI = await fetch('http://apilayer.net/api/validate?access_key='+PHONE_API_KEY+'&number='+input , phoneOptions)
         const results = await getAPI.json();
         // for testing
         // const results = {
         //     "valid": true,
-        //     "line_type": "toll_free"
+        //     "line_type": "mobile",
+        //     "carrier": "t-mobile"
         // }
         displayResults(results, id);
     } else if(id===3){
         // guru
+        getAPI = await fetch('https://scam-sentry-backend.herokuapp.com/guru-detector', options); 
+        const results = await getAPI.json();
+        displayResults(results, id);  
+    } else if(id===4){
+        // mlm detector
+        // TODO: change this
         getAPI = await fetch('https://scam-sentry-backend.herokuapp.com/guru-detector', options); 
         const results = await getAPI.json();
         displayResults(results, id);  
@@ -257,29 +273,36 @@ function phoneResults(results, resultsSection){
             </section>
             </div>
         </div>`;
-
+        
         // adds an event listener to each radio button
         document
         .querySelector(".phone-form")
         .addEventListener("change", function (e) {
-          if (e.target.classList === "form-check-input") {
+          if (e.target.classList == "form-check-input") {
             showNextPhoneForm(e.target.id, e.target.value, resultsSection);
           }
         });
+
 
     } else {
         // include more info about scams here!
         // TODO: format this better!!!
         resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
         <h2>No scam detected</h2>
-        <p><b>Note: </b> if this number shows up as "scam likely" in your phone, it probably is a scam. Also note if anyone asks for payment over the phone especially through giftcards, wire transfer, bitcoin, prepaid debit card, private courier, or similar method, it is a scam. Also be advised of any unkown caller attemting to scare or threaten you, it is most likely a scam.</p>
+        <p>Note that even though no scam was detected, this phone number could still be a scam. These are a few signs to look out for to determine if a phone call is a scam:
+        <ul>
+        <li>If a number shows up as "scam likely" in your phone.</li>
+        <li>If someone asks for payment over the phone especially through giftcards, wire transfer, bitcoin, prepaid debit card, private courier, or similar method.</li>
+        <li>If an unkown caller attemts to scare or threaten you.</li>
+        </ul>
+        <p>If any of these are true, it is a scam.</p>
         </div>`;
     }
 }
 
 // this function helps with the phone form!!!
 function showNextPhoneForm(id, value, resultsSection){
-    console.log(id);
+    // console.log(id);
     if(value === 'yes'){
         resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
         <h2>Scam likely!</h2>
@@ -303,8 +326,21 @@ function showNextPhoneForm(id, value, resultsSection){
         // TODO: format this better!!!
         resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
         <h2>No scam detected</h2>
-        <p><b>Note: </b> if this number shows up as "scam likely" in your phone, it probably is a scam. Also note if anyone asks for payment over the phone especially through giftcards, wire transfer, bitcoin, prepaid debit card, private courier, or similar method, it is a scam. Also be advised of any unkown caller attemting to scare or threaten you, it is most likely a scam.</p>
+        <p>Note that even though no scam was detected, this phone number could still be a scam. These are a few signs to look out for to determine if a phone call is a scam:
+        <ul>
+        <li>If a number shows up as "scam likely" in your phone.</li>
+        <li>If someone asks for payment over the phone especially through giftcards, wire transfer, bitcoin, prepaid debit card, private courier, or similar method.</li>
+        <li>If an unkown caller attemts to scare or threaten you.</li>
+        </ul>
+        <p>If any of these are true, it is a scam.</p>
         </div>`;
         window.scrollTo(0, 0,);
     }
 }
+
+
+// old phone not scam text:
+{/* <div class="alert alert-success" role="alert">
+        <h2>No scam detected</h2>
+        <p><b>Note: </b> if this number shows up as "scam likely" in your phone, it probably is a scam. Also note if anyone asks for payment over the phone especially through giftcards, wire transfer, bitcoin, prepaid debit card, private courier, or similar method, it is a scam. Also be advised of any unkown caller attemting to scare or threaten you, it is most likely a scam.</p>
+        </div>` */}

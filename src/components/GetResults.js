@@ -77,13 +77,14 @@ export const getResult = async (id) => {
             console.log("!results = " + response.api);
             let resultOptions = {
                 method: 'GET',
+                mode: 'no-cors',
                 url: response.api,
                 headers: {
                     'Content-Type': 'application/json',
                     'API-Key': URLSCAN_API_KEY
                 }
             }
-            fetch(FIX_CORS+response.api, resultOptions)
+            fetch(response.api, resultOptions)
             .then(results => results.json())
             .then(results => console.log(results))
         })

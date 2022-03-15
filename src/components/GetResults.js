@@ -79,7 +79,8 @@ export const getResult = async (id) => {
                 method: 'GET',
                 url: response.api,
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'API-Key': URLSCAN_API_KEY
                 }
             }
             fetch(FIX_CORS+response.api, resultOptions)

@@ -69,11 +69,12 @@ export const getResult = async (id) => {
         // getAPI = await fetch('https://urlscan.io/api/v1/scan/', websiteOptions);
         // const results = await getAPI.json();
         // console.log(results);
-        // 
+        // note this does not work in local host!
         fetch(FIX_CORS+'https://urlscan.io/api/v1/scan/', websiteOptions)
         .then(response => response.json())
         .then(response =>  {
             console.log(response) 
+            console.log("!results = " + response.results) 
             fetch(FIX_CORS+response.results)
             .then(results => results.json())
             .then(results => console.log(results))

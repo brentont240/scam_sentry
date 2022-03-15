@@ -77,7 +77,6 @@ export const getResult = async (id) => {
             console.log("!results = " + response.api);
             let resultOptions = {
                 method: 'GET',
-                mode: 'no-cors',
                 url: response.api,
                 headers: {
                     'Content-Type': 'application/json',

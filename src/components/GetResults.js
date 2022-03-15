@@ -75,7 +75,7 @@ export const getResult = async (id) => {
         .then(response =>  { 
             getAPI = fetch(response.results)
             .then(response => response.json())
-            .then(console.log(response))
+            .then(response => console.log(response))
         })
         .catch(err => console.error(err));
     } else if(id===2){ 

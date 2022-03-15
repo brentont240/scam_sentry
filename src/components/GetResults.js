@@ -70,35 +70,25 @@ export const getResult = async (id) => {
         // const results = await getAPI.json();
         // console.log(results);
         // note this does not work in local host!
-        let resultsURL = '';
         fetch(FIX_CORS+'https://urlscan.io/api/v1/scan/', websiteOptions)
         .then(response => response.json())
         .then(response =>  {
-            console.log(response) 
-            console.log("!results = " + response.api);
-            resultsURL  = response.api;
-            // let resultOptions = {
-            //     method: 'GET',
-            //     url: response.api,
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //         'API-Key': URLSCAN_API_KEY
-            //     }
-            // }
-
-        })
-        .catch(err => console.error(err));
-            let resultOptions = {
+            console.log(response);
+            console.log("results = " + response.api);
+            const resultsURL = response.api;
+            const resultOptions = {
                 method: 'GET',
-                url: resultsURL,
+                url: response.api,
                 headers: {
                     'Content-Type': 'application/json',
                     'API-Key': URLSCAN_API_KEY
                 }
-            }
-        fetch(FIX_CORS+resultsURL, resultOptions)
-        .then(results => results.json())
-        .then(results => console.log(results));
+            };
+            fetch(FIX_CORS+resultsURL, resultOptions)
+            .then(results => results.json())
+            .then(results => console.log(results));
+        })
+        .catch(err => console.error(err));
     } else if(id===2){ 
         // phone
         const phoneOptions = {

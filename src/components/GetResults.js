@@ -75,7 +75,7 @@ export const getResult = async (id) => {
         .then(response =>  {
             console.log(response);
             console.log("results = " + response.api);
-            const resultsURL = 'urlscan.io/api/v1/result/'+response.uuid;
+            const resultsURL = 'https://urlscan.io/api/v1/result/'+response.uuid;
             const resultOptions = {
                 method: 'GET',
                 url: response.api,

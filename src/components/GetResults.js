@@ -1,9 +1,7 @@
-import { wait } from "@testing-library/user-event/dist/utils";
-
 const PHONE_API_KEY = process.env.REACT_APP_PHONE_KEY;
 const URLSCAN_API_KEY = process.env.REACT_APP_URLSCAN_KEY;
 // this fixes cors errors
-const fix_cors = 'https://fix-cors-problems.herokuapp.com/';
+
 
 // TODO: in the website detector say that they can go to the guru detector to see if a website is a get rich quick scheme website
 
@@ -278,6 +276,7 @@ function phoneResults(results, resultsSection){
         document
         .querySelector(".phone-form")
         .addEventListener("change", function (e) {
+          // eslint-disable-next-line eqeqeq
           if (e.target.classList == "form-check-input") {
             showNextPhoneForm(e.target.id, e.target.value, resultsSection);
           }
@@ -340,6 +339,7 @@ function showNextPhoneForm(id, value, resultsSection){
 
 
 // old phone not scam text:
+// eslint-disable-next-line no-lone-blocks
 {/* <div class="alert alert-success" role="alert">
         <h2>No scam detected</h2>
         <p><b>Note: </b> if this number shows up as "scam likely" in your phone, it probably is a scam. Also note if anyone asks for payment over the phone especially through giftcards, wire transfer, bitcoin, prepaid debit card, private courier, or similar method, it is a scam. Also be advised of any unkown caller attemting to scare or threaten you, it is most likely a scam.</p>

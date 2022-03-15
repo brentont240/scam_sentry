@@ -77,7 +77,10 @@ export const getResult = async (id) => {
             console.log("!results = " + response.api);
             let resultOptions = {
                 method: 'GET',
-                url: response.api
+                url: response.api,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             }
             fetch(FIX_CORS+response.api, resultOptions)
             .then(results => results.json())

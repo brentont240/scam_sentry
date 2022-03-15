@@ -72,10 +72,11 @@ export const getResult = async (id) => {
         // 
         fetch(FIX_CORS+'https://urlscan.io/api/v1/scan/', websiteOptions)
         .then(response => response.json())
-        .then(response =>  { 
-            getAPI = fetch(response.results)
-            .then(response => response.json())
-            .then(response => console.log(response))
+        .then(response =>  {
+            console.log(response) 
+            fetch(FIX_CORS+response.results)
+            .then(results => results.json())
+            .then(results => console.log(results))
         })
         .catch(err => console.error(err));
     } else if(id===2){ 

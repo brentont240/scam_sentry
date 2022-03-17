@@ -65,7 +65,7 @@ export const getResult = async (id) => {
             },
             body: JSON.stringify({"url": input, "visibility": "public"})
         }
-        console.log(websiteOptions);
+        // console.log(websiteOptions);
         // getAPI = await fetch('https://urlscan.io/api/v1/scan/', websiteOptions);
         // const results = await getAPI.json();
         // console.log(results);
@@ -130,8 +130,9 @@ export const getResult = async (id) => {
     } else if(id===4){
         // mlm detector
         // TODO: change this
-        getAPI = await fetch('https://scam-sentry-backend.herokuapp.com/guru-detector', options); 
+        getAPI = await fetch('https://scam-sentry-backend.herokuapp.com/mlm-detector', options); 
         const results = await getAPI.json();
+        console.log(results);
         displayResults(results, id);  
     }
 
@@ -146,6 +147,8 @@ function displayResults(results, id){
     // scroll to the top, before getting results
     window.scrollTo(0, 0,);
     switch(id){
+        case 4:
+            return mlmResults(results, resultsSection);
         case 3:
             return guruResults(results, resultsSection);
         case 2:
@@ -368,6 +371,29 @@ function showNextPhoneForm(id, value, resultsSection){
         <p>If any of these are true, it is a scam.</p>
         </div>`;
         window.scrollTo(0, 0,);
+    }
+}
+
+function mlmResults(results, resultsSection){
+    const matchFound = results.matchFound;
+    const company = results.match;
+    const type = results.type;
+
+    if(!matchFound){
+        resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
+        <h2>No MLM detected</h2>
+        </div>`
+    } else if(type !== ''){
+        // if the type is not empty
+        resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
+        <h2>MLM detected!</h2>
+        <p><b>${company}</b> is an MLM for ${type}.</p>
+        </div>`;
+    } else{
+        resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
+        <h2>MLM detected!</h2>
+        <p><b>${company}</b> is an MLM.</p>
+        </div>`;
     }
 }
 

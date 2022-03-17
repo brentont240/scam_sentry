@@ -3,6 +3,7 @@ import tools from '../data/tools.json'
 import PageNotFound from "./PageNotFound";
 import { useParams } from "react-router-dom";
 import { getResult } from "../components/GetResults";
+
 // FIXME: NEED TO FIX THE CORS ERROR
 // need to put REACT_APP in front of the environment variables
 

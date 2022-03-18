@@ -7,6 +7,7 @@ import { getResult } from "../components/GetResults";
 // FIXME: NEED TO FIX THE CORS ERROR
 // need to put REACT_APP in front of the environment variables
 
+
 const ToolsPage = () => {
     let params = useParams();
     const tool = tools.List.find(tool => tool.Url === params.url);

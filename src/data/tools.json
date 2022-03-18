@@ -5,7 +5,7 @@
         "Name": "Scam Email Detector",
         "Icon": "envelope",
         "Description": "This tool detects if an email is a scam or not.",
-        "BodyText": "This tool will detect if an email is a scam or not. To use this tool copy the contents of the supected email and paste them into the box below, then click the \"Scan Email\" button. SHOULD THE BUTTON BE BIGGER ON DESKTOP?",
+        "BodyText": "This tool will detect if an email is a scam or not. To use this tool copy the contents of the supected email and paste them into the box below, then click the \"Scan Email\" button. SHOULD THE BUTTON BE BIGGER ON DESKTOP? DO I WANT ALERT ICONS, THERE IS ONE ON HERE IF IT IS DEFINETLY A SCAM.",
         "Url": "email-detector",
         "InputFieldType": "",
         "InputPlaceholderText": "Paste the contents of the suspected email here.",
@@ -34,7 +34,7 @@
         "BodyText": "Maybe put an explanation of how to enter this properly or automatically format it right. NEED TO FINISH THIS, MAKE A FORM FOR WHEN IT MEETS THE REQUIREMENTS !!!!!!!!!! NOTE THE API IS CURRENTLY DISCONNECTED FOR TESTING PURPOSES!!",
         "Url": "phone-detector",
         "InputFieldType": "",
-        "InputPlaceholderText": "Enter phone number without spaces or dashes (include country code!) ex: 11234567891",
+        "InputPlaceholderText": "Ex: 1-123-456-7890 or 11234567890",
         "InputType": "",
         "ButtonText": "Scan Number",
         "IsExternal": false
@@ -47,7 +47,7 @@
         "BodyText": "This tool can be used to detect suspected fake gurus by name and / or websites related to fake gurus or get rich quick schemes.",
         "Url": "guru-detector",
         "InputFieldType": "",
-        "InputPlaceholderText": "",
+        "InputPlaceholderText": "Enter name or email",
         "InputType": "text",
         "ButtonText": "Scan",
         "IsExternal": false
@@ -62,14 +62,14 @@
         "InputFieldType": "",
         "InputPlaceholderText": "Enter company name",
         "InputType": "text",
-        "ButtonText": "Check",
+        "ButtonText": "Scan",
         "IsExternal": false
       },
       {
         "Id": 5,
         "Name": "Crypto Scam Detector",
         "Icon": "bitcoin",
-        "Description": "Description about the tool. Note: Links to an external site.",
+        "Description": "This tool helps to protect against cryptocurrency scams such as rug pulls. Note: Links to an external site (tokensniffer.com).",
         "BodyText": "",
         "Url": "https://tokensniffer.com/",
         "InputFieldType": "",

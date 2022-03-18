@@ -3,6 +3,15 @@ const URLSCAN_API_KEY = process.env.REACT_APP_URLSCAN_KEY;
 // this fixes cors errors
 const FIX_CORS = 'https://fix-cors-problems.herokuapp.com/';
 
+// https://getbootstrap.com/docs/5.0/components/alerts/ for more alert icons!
+const warning_icon = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2 icon-margin" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+<path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+</svg>`;
+
+const info_icon = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="info-fill flex-shrink-0 me-2 icon-margin" viewBox="0 0 16 16" role="img" aria-label="Info:">
+<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+</svg>`;
+
 // TODO: in the website detector say that they can go to the guru detector to see if a website is a get rich quick scheme website
 
 // used to get the results on the tools page
@@ -163,69 +172,89 @@ function displayResults(results, id){
     }
 }
 
-
 function emailResults(results, resultsSection){
     const rating = results.rating;
     const isShort = results.isShort;
     switch(rating){
         case 3:
             resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
-            <h1>Scam detected!</h1>
-            <p>This email is definitely a scam</p>
+            <h1>${warning_icon}Scam detected!</h1>
+            <p><b>This email is without a doubt a scam!</b> It has many characteristics that are common in scam emails.</p>
+            <p><b>Do not</b> initiate contact with the scammer! If contact has already been initiated, cease contact immediately.</p>
+            <p><b>Do not</b> click on any links or attachments that a scammer sends you; they may contain malicious content.</p>
+            <p><b>Never</b> share personal information such as name, address, birthdate, bank account information, etc. with a stranger over the internet.</p>
+            <p><b>Never</b> send a scammer money! You will never receive the money that they promise you.</p>
+            <p>You can report this scam to the FTC <a href="https://reportfraud.ftc.gov/#/" class="alert-link" rel="noreferrer" target="_blank">here</a>.</p>
             </div>`;
             return;
         case 2:
             resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
-            <h1>Scam detected!</h1>
+            <h1>${warning_icon}Scam detected!</h1>
+            <p>This email is likely a scam.</p>
+            <p><b>Do not</b> initiate contact with the scammer! If contact has already been initiated, cease contact immediately.</p>
+            <p><b>Do not</b> click on any links or attachments that a scammer sends you; they may contain malicious content.</p>
+            <p><b>Never</b> share personal information such as name, address, birthdate, bank account information, etc. with a stranger over the internet.</p>
+            <p><b>Never</b> send a scammer money! You will never receive the money that they promise you.</p>
+            <p>You can report this scam to the FTC <a href="https://reportfraud.ftc.gov/#/" class="alert-link" rel="noreferrer" target="_blank">here</a>.</p>
             </div>`;
             return;
-         // TODO: implement the use short if the rating is 0 or 1!!!
         case 1:
             if(!isShort){
             resultsSection.innerHTML = `<div class="alert alert-warning" role="alert">
-            <h2>Possible scam detected</h2>
+            <h2>${warning_icon}Possible scam detected</h2>
+            <p>This email could possibly be a scam; however, there were not enough similarities to scam emails found to determine that it is.</p>
+            <p>If the email is from a stranger and promises large sums of money, a prize, or an incredible opportunity, it is a scam.</p>
+            <p>Do not send money or personal information to strangers over the internet. Anyone who asks you to do so is most likely a scammer.</p>
+            <p>If you believe this is a scam, it is best to cease all contact with the scammer.</p>
             </div>`;
             return;
         } else{
             resultsSection.innerHTML = `<div class="alert alert-warning" role="alert">
-            <h2>Possible scam detected</h2>
-            <p>This is email is short ... (put something about short emails here)</p>
+            <h2>${warning_icon}Possible scam detected</h2>
+            <p>This email could possibly be a scam; however, there were not enough similarities to scam emails found to determine that it is.</p>
+            <p><b>Note:</b> This email is short so there may not be enough information to determine whether it is a scam or not. If the email promises a large sum of money, a prize, or an incredible opportunity, it is a scam. 
+            Remember if it sounds too good to be true, it probably is. If you believe this is a scam, it is best to cease all contact with the scammer. Do not send money or personal information to strangers over the internet.</p>
             </div>`;
             return;
         }
-        // TODO: implement the use short if the rating is 0 or 1!!!
         default:
             if(!isShort){
             resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
-            <h2>No scam detected</h2>
+            <h2>${info_icon}No scam detected</h2>
+            <p>No scam was detected. There is a good chance that this email is safe, however be on the lookout for these signs that an email is a scam:</p>
+            <p>If the email is from a stranger and promises large sums of money, a prize, or an incredible opportunity, it is a scam.</p>
+            <p>Do not send money or personal information to strangers over the internet. Anyone who asks you to do so is most likely a scammer.</p>
+            <p>If you believe this is a scam, it is best to cease all contact with the scammer.</p>
             </div>`;
             } else{
             resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
-            <h2>No scam detected</h2>
-            <p>This is email is short ... (put something about short emails here)</p>
+            <h2>${info_icon}No scam detected</h2>
+            <p>No scam was detected. There is a good chance that this email is safe.</p>
+            <p><b>Note:</b> This email is short so there may not be enough information to determine whether it is a scam or not. If the email promises a large sum of money, a prize, or an incredible opportunity, it is a scam. 
+            Remember if it sounds too good to be true, it probably is. If you believe this is a scam, it is best to cease all contact with the scammer. Do not send money or personal information to strangers over the internet.</p>
             </div>`;
             }
     }
 }
 
-// TODO: NEED TO ADD MORE GURUS / SITES TO THE DATABASE
+// TODO: ADD LINK TO THE FTC REPORTING THING SO THEY CAN REPORT THIS
 function guruResults(results, resultsSection){
     const matchFound = results.matchFound;
     const websiteMatch = results.websiteMatch;
     const guruMatch = results.guruMatch;
     if (!matchFound || (websiteMatch == null && guruMatch == null)){
         resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
-        <h2>No known fake guru or fake guru related website detected</h2>
+        <h2>${info_icon}No known fake guru or fake guru related website detected</h2>
         </div>`;
         return;
     } else if(guruMatch != null){
         resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
-        <h2>Fake guru detected!</h2>
+        <h2>${warning_icon}Fake guru detected!</h2>
         <p><b>${guruMatch}</b> is a known fake guru.</p>
         </div>`;
     } else {     
         resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
-        <h2>Get rich quick scheme website detected!</h2>
+        <h2>${warning_icon}Get rich quick scheme website detected!</h2>
         <p><b>${websiteMatch}</b> is a get rich quick scheme website.</p>
         </div>`;
     }
@@ -240,13 +269,14 @@ function phoneResults(results, resultsSection){
     console.log(results);   
     if (results.success === false){
         resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
-        <h2>Error with phone detector!</h2>
+        <h2>${warning_icon}Error with phone detector!</h2>
         </div>`;        
     }
     if(results.valid === false){
         // TODO: put some instructions here!
         resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
-        <h2>Invalid number!</h2>
+        <h2>${warning_icon}Invalid number!</h2>
+        <p>Either the phone number was inputted wrong or this is not a valid phone number.</p>
         </div>`;
         return;
     }
@@ -255,7 +285,7 @@ function phoneResults(results, resultsSection){
     if (lineType === 'landline' || lineType === 'toll_free' || carrier === ''){
         resultsSection.innerHTML = 
         `<div class="alert alert-warning" role="alert">
-        <h2>Possible scam detected</h2>
+        <h2>${warning_icon}Possible scam detected</h2>
         <p>Please fill out this form with additional information to help determine if this phone number is a scam or not:</p>
         <div class="phone-form">        
         <p>Did this phone number appear as "scam likely" in your phone?</p>
@@ -324,7 +354,7 @@ function phoneResults(results, resultsSection){
         // include more info about scams here!
         // TODO: format this better!!!
         resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
-        <h2>No scam detected</h2>
+        <h2>${info_icon}No scam detected</h2>
         <p>Note that even though no scam was detected, this phone number could still be a scam. These are a few signs to look out for to determine if a phone call is a scam:
         <ul>
         <li>If a number shows up as "scam likely" in your phone.</li>
@@ -335,13 +365,13 @@ function phoneResults(results, resultsSection){
         </div>`;
     }
 }
-
+// TODO: ADD LINK TO THE FTC REPORTING THING SO THEY CAN REPORT THIS
 // this function helps with the phone form!!!
 function showNextPhoneForm(id, value, resultsSection){
     // console.log(id);
     if(value === 'yes'){
         resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
-        <h2>Scam likely!</h2>
+        <h2>${warning_icon}Scam likely!</h2>
         <p>It is likely that this phone number is a scam!</p>
         </div>`;
         window.scrollTo(0, 0,);
@@ -361,7 +391,7 @@ function showNextPhoneForm(id, value, resultsSection){
         // include more info about scams here!
         // TODO: format this better!!!
         resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
-        <h2>No scam detected</h2>
+        <h2>${info_icon}No scam detected</h2>
         <p>Note that even though no scam was detected, this phone number could still be a scam. These are a few signs to look out for to determine if a phone call is a scam:
         <ul>
         <li>If a number shows up as "scam likely" in your phone.</li>
@@ -379,19 +409,23 @@ function mlmResults(results, resultsSection){
     const company = results.match;
     const type = results.type;
 
+    // TODO: ADD MORE TO THE INFO FOR THESE???
+    // TODO: ADD LINK TO THE FTC REPORTING THING SO THEY CAN REPORT THIS SAY THEY CAN REPORT IT AS A PYRAMID SCHEME
     if(!matchFound){
         resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
-        <h2>No MLM detected</h2>
+        <h2>${info_icon}No MLM detected</h2>
+        <p>The entered company is not a known MLM.</p>
+        <p>Be sure that you entered the company name properly.</p>
         </div>`
     } else if(type !== ''){
         // if the type is not empty
         resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
-        <h2>MLM detected!</h2>
+        <h2>${warning_icon}MLM detected!</h2>
         <p><b>${company}</b> is an MLM for ${type}.</p>
         </div>`;
     } else{
         resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
-        <h2>MLM detected!</h2>
+        <h2>${warning_icon}MLM detected!</h2>
         <p><b>${company}</b> is an MLM.</p>
         </div>`;
     }

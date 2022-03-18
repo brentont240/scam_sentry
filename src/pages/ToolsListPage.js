@@ -11,9 +11,10 @@ const ToolsListPage = () => (
     <div className="container">
       {/* TODO: make these look much better!!! */}
     {/* FIXME: should this title be centered? */}
-      <h1 className="pt-3">Tools</h1>
-
- 
+    <span class="text-center">
+        <h1 className="pt-4">Tools</h1>
+    </span>
+    
       {/* put some information about the tools here? */}
       <div className="tools mt-4">
       {Tools.List.map((tool, key) =>(
@@ -29,7 +30,12 @@ const ToolsListPage = () => (
                 {/* FIXME: change a to a Link */}
                 {/* this makes the button go to the bottom of the card */}
                 <div className="mt-auto d-flex flex-row justify-content-center">
-                <Link to={`/tools/${tool.Url}`} className="btn button-tools button-tools-list">Use Tool <FontAwesomeIcon icon={getButtonIcon(tool.IsExternal)} /></Link>
+                {/* Links to an external site, if IsExternal is true */}
+                {tool.IsExternal ? (
+                    <a href={tool.Url} target={"_blank"} className="btn button-tools button-tools-list" rel="noreferrer">Use Tool <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a>
+                ) : (
+                    <Link to={`/tools/${tool.Url}`} className="btn button-tools button-tools-list">Use Tool <FontAwesomeIcon icon={faArrowRight} /></Link>
+                )}
                 </div>
             </div>
         </div>
@@ -59,15 +65,6 @@ function getIcon(icon){
             return faBitcoinSign;
         default:
             return;
-    }
-}
-
-function getButtonIcon(isExternal){
-    switch(isExternal){
-        case true:
-            return faArrowUpRightFromSquare;
-        default:
-            return faArrowRight;
     }
 }
 

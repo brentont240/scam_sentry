@@ -16,7 +16,7 @@ const ToolsPage = () => {
     // if using fetch do npm install --save whatwg-fetch so it can work on ie
     // TODO: add a radar icon to the buttons?
     if(tool.InputType === "textarea")
-        inputAndButton = <> <textarea name="input" id="input" cols="50" rows="15" className="mt-2 input-field-color email-detector-text-area" placeholder={tool.InputPlaceholderText} ></textarea> 
+        inputAndButton = <> <textarea name="input" id="input" cols="50" rows="15" className="mt-2 input-field-color email-detector-text-area" placeholder={tool.InputPlaceholderText}></textarea> 
         <span id="button-section"><button type="button" className="btn button-tools text-field-button" onClick={() => getResult(tool.Id)}>{tool.ButtonText}</button></span> </>;
     else {
         inputAndButton = <div className="input-group my-4">
@@ -25,6 +25,15 @@ const ToolsPage = () => {
         </div>;
         
     }
+
+    // this makes it so that the user can use the tool by pressing the enter key
+    // note this will submit it whenever the enter key is pressed on the page (probably doesn't matter)
+    document.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            getResult(tool.Id);
+        }
+    });
 
     return ( 
        <div className="container">

@@ -6,16 +6,14 @@ import { faEnvelope, faGlobe, faPhone, faUserTie, faBitcoinSign, faArrowRight, f
 
 // TODO: maybe add the tools to the toolbar in the header? (want to do that dynamically)
 
-// FIXME: Make the buttons all in the same spot, so it looks better
 const ToolsListPage = () => (
     <div className="container">
-      {/* TODO: make these look much better!!! */}
-    {/* FIXME: should this title be centered? */}
-    <span class="text-center">
+    <span className="text-center">
         <h1 className="pt-4">Tools</h1>
     </span>
     
       {/* put some information about the tools here? */}
+
       <div className="tools mt-4">
       {Tools.List.map((tool, key) =>(
           <div className="card tool-card shadow-sm" key={key}>

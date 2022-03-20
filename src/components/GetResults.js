@@ -1,7 +1,6 @@
+// need to put REACT_APP in front of the environment variables
+
 const PHONE_API_KEY = process.env.REACT_APP_PHONE_KEY;
-const URLSCAN_API_KEY = process.env.REACT_APP_URLSCAN_KEY;
-// this fixes cors errors
-const FIX_CORS = 'https://fix-cors-problems.herokuapp.com/';
 
 // https://getbootstrap.com/docs/5.0/components/alerts/ for more alert icons!
 const warning_icon = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2 icon-margin" viewBox="0 0 16 16" role="img" aria-label="Warning:">
@@ -12,20 +11,10 @@ const info_icon = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25
 <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
 </svg>`;
 
-// TODO: in the website detector say that they can go to the guru detector to see if a website is a get rich quick scheme website
-
 // used to get the results on the tools page
 export const getResult = async (id) => {
     // TODO: maybe reset the results section when the button is click, so the user knows that the results will be for the new input!!!
     const input = document.querySelector("#input").value;
-
-    // for the button to load!
-    // let button = document.querySelector("#button-section");
-    // let buttonBefore = button.innerHTML;
-    // button.innerHTML = `<button class="btn button-tools" type="button" disabled>
-    // <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-    // <span> Loading...</span>
-    // </button>`;
     let resultsSection = document.querySelector('#results');
     // if there is no input, show an error message.
     if (input === ""){
@@ -60,62 +49,6 @@ export const getResult = async (id) => {
         const results = await getAPI.json();
         // TODO: BETTER DESCRIPTIONS FOR SHORT EMAILS THAT ARENT IDENTIFIED AS SCAMS!
         displayResults(results, id);    
-    } else if(id===1){
-        // website
-        // TODO: try https://www.virustotal.com/  or https://urlscan.io/ OR ANOTHER THING FROM https://zeltser.com/lookup-malicious-websites/
-        const websiteOptions = {
-            method: 'POST',
-            url: 'https://urlscan.io/api/v1/scan/',
-            // mode: 'no-cors',
-            headers: {
-                // 'Accept': '*/*',
-                'Content-Type': 'application/json',
-                'API-Key': URLSCAN_API_KEY
-            },
-            body: JSON.stringify({"url": input, "visibility": "public"})
-        }
-        // console.log(websiteOptions);
-        // getAPI = await fetch('https://urlscan.io/api/v1/scan/', websiteOptions);
-        // const results = await getAPI.json();
-        // console.log(results);
-        // note this does not work in local host!
-
-        // fetch(FIX_CORS+'https://urlscan.io/api/v1/scan/', websiteOptions)
-        // .then(response => response.json())
-        // .then(response =>  {
-        //     console.log(response);
-        //     console.log("results = " + response.api);
-        //     const resultsURL = 'https://urlscan.io/api/v1/result/'+response.uuid;
-        //     const resultOptions = {
-        //         method: 'GET',
-        //         url: response.api,
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'API-Key': URLSCAN_API_KEY
-        //         }
-        //     };
-        //     fetch(FIX_CORS+resultsURL, resultOptions)
-        //     .then(results => results.json())
-        //     .then(results => console.log(results));
-        // })
-        // .catch(err => console.error(err));
-
-        getAPI = await fetch(FIX_CORS+'https://urlscan.io/api/v1/scan/', websiteOptions);
-        const response = await getAPI.json();
-        console.log(response);
-        const resultsURL = await 'https://urlscan.io/api/v1/result/'+response.uuid;
-        const resultOptions = {
-            method: 'GET',
-            url: resultsURL,
-            headers: {
-                'Content-Type': 'application/json',
-                'API-Key': URLSCAN_API_KEY
-            }
-        }
-        getAPI = await fetch(FIX_CORS+resultsURL, resultOptions);
-        const results = getAPI.json();
-        console.log(results);
-
     } else if(id===2){ 
         // phone
         const phoneOptions = {
@@ -244,7 +177,7 @@ function guruResults(results, resultsSection){
     const guruMatch = results.guruMatch;
     if (!matchFound || (websiteMatch == null && guruMatch == null)){
         resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
-        <h2>${info_icon}No known fake guru or fake guru related website detected</h2>
+        <h2>${info_icon}No known fake guru or fake guru related (get rich quick scheme) website detected</h2>
         </div>`;
         return;
     } else if(guruMatch != null){
@@ -373,6 +306,9 @@ function showNextPhoneForm(id, value, resultsSection){
         resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
         <h2>${warning_icon}Scam likely!</h2>
         <p>It is likely that this phone number is a scam!</p>
+        <p>Do not give strangers personal information or money over the phone. Never divulge sensitive information such as bank account information or social security number to strangers.</p>
+        <p>Do not attempt to call the scammer!</p>
+        <p>You can report this scam to the FTC <a href="https://reportfraud.ftc.gov/#/" class="alert-link" rel="noreferrer" target="_blank">here</a>.</p>
         </div>`;
         window.scrollTo(0, 0,);
         return;
@@ -410,7 +346,8 @@ function mlmResults(results, resultsSection){
     const type = results.type;
 
     // TODO: ADD MORE TO THE INFO FOR THESE???
-    // TODO: ADD LINK TO THE FTC REPORTING THING SO THEY CAN REPORT THIS SAY THEY CAN REPORT IT AS A PYRAMID SCHEME
+    // TODO: ADD LINK TO THE FTC REPORTING THING SO THEY CAN REPORT THIS SAY THEY CAN REPORT IT AS A PYRAMID SCHEME 
+
     if(!matchFound){
         resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
         <h2>${info_icon}No MLM detected</h2>
@@ -422,11 +359,13 @@ function mlmResults(results, resultsSection){
         resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
         <h2>${warning_icon}MLM detected!</h2>
         <p><b>${company}</b> is an MLM for ${type}.</p>
+        <p>You can report pyramid schemes and fraudulent businesses to the FTC <a href="https://reportfraud.ftc.gov/#/" class="alert-link" rel="noreferrer" target="_blank">here</a>.</p>
         </div>`;
     } else{
         resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
         <h2>${warning_icon}MLM detected!</h2>
         <p><b>${company}</b> is an MLM.</p>
+        <p>You can report pyramid schemes and fraudulent businesses to the FTC <a href="https://reportfraud.ftc.gov/#/" class="alert-link" rel="noreferrer" target="_blank">here</a>.</p>
         </div>`;
     }
 }

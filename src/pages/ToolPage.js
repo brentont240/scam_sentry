@@ -4,8 +4,7 @@ import PageNotFound from "./PageNotFound";
 import { useParams } from "react-router-dom";
 import { getResult } from "../components/GetResults";
 
-// FIXME: NEED TO FIX THE CORS ERROR
-// need to put REACT_APP in front of the environment variables
+
 
 
 const ToolsPage = () => {
@@ -31,7 +30,8 @@ const ToolsPage = () => {
     document.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             e.preventDefault();
-            getResult(tool.Id);
+            // clicks the button when enter is pressed
+            document.querySelector('.button-tools').click();
         }
     });
 

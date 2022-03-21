@@ -115,7 +115,7 @@ function emailResults(results, resultsSection){
             <p><b>This email is without a doubt a scam!</b> It has many characteristics that are common in scam emails.</p>
             <p><b>Do not</b> initiate contact with the scammer! If contact has already been initiated, cease contact immediately.</p>
             <p><b>Do not</b> click on any links or attachments that a scammer sends you; they may contain malicious content.</p>
-            <p><b>Never</b> share personal information such as name, address, birthdate, bank account information, etc. with a stranger over the internet.</p>
+            <p><b>Never</b> share personal information such as your name, address, birthdate, bank account information, etc. with a stranger over the internet.</p>
             <p><b>Never</b> send a scammer money! You will never receive the money that they promise you.</p>
             <p>You can report this scam to the FTC <a href="https://reportfraud.ftc.gov/#/" class="alert-link" rel="noreferrer" target="_blank">here</a>.</p>
             </div>`;
@@ -126,7 +126,7 @@ function emailResults(results, resultsSection){
             <p>This email is likely a scam.</p>
             <p><b>Do not</b> initiate contact with the scammer! If contact has already been initiated, cease contact immediately.</p>
             <p><b>Do not</b> click on any links or attachments that a scammer sends you; they may contain malicious content.</p>
-            <p><b>Never</b> share personal information such as name, address, birthdate, bank account information, etc. with a stranger over the internet.</p>
+            <p><b>Never</b> share personal information such as your name, address, birthdate, bank account information, etc. with a stranger over the internet.</p>
             <p><b>Never</b> send a scammer money! You will never receive the money that they promise you.</p>
             <p>You can report this scam to the FTC <a href="https://reportfraud.ftc.gov/#/" class="alert-link" rel="noreferrer" target="_blank">here</a>.</p>
             </div>`;

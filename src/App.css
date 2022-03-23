@@ -192,3 +192,46 @@ footer a:hover{
   margin-bottom: 20px;
   max-width: 500px;
 }
+
+/* for the articles */
+
+.article-list{
+  margin: 30px 0px ;
+  border-top: 3px solid var(--secondary-color);
+}
+
+.article-type{
+  color: var(--primary-color);
+}
+
+.article-thumbnail-image{
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+}
+
+/* change flex direction to column and center images on smaller screens */
+@media only screen and (max-width: 770px){
+  .article-item{
+    flex-direction: column;
+  }
+  .article-item img{
+    margin: auto;
+  }
+}
+
+.article-item{
+  display: flex;
+  gap: 50px;
+  border-bottom: 3px solid var(--secondary-color);
+  padding: 20px 0px;
+}
+
+.article-image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  max-height: 600px;
+  max-width: 100%;
+}

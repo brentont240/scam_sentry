@@ -1,6 +1,6 @@
 import React from "react";
-import Tools from '../data/tools.json'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Tools from '../data/tools.json';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from "react-router-dom";
 import { faEnvelope, faGlobe, faPhone, faUserTie, faBitcoinSign, faArrowRight, faArrowUpRightFromSquare, faSquareCaretUp} from '@fortawesome/free-solid-svg-icons'
 

@@ -1,37 +1,27 @@
 import React from "react";
+import Articles from "../data/articles.json";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 const ArticlesListPage = () => (
-  // When a component returns more than one element, use react fragment!<React.Fragment> or <> </>
-  <>
     <div className="container">
       {/* TODO: maybe use a card component for this? */}
       <h1 className="pt-3">Articles</h1>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque, cum
-        quas mollitia placeat nostrum dolor sunt nesciunt autem illum possimus
-        culpa odio maiores voluptate ut officia unde earum totam? Eius qui
-        magni, at aliquam nesciunt ad adipisci ullam minima id neque libero, vel
-        eos ipsum, hic animi sunt maiores rem inventore! Omnis a distinctio vero
-        sequi rerum debitis laborum eum perspiciatis harum! Unde eligendi earum,
-        cum nisi dolores doloribus eaque. Aspernatur asperiores optio soluta
-        perferendis quibusdam eveniet, modi autem, provident nobis alias
-        corrupti dolorum. Quam aut veniam ullam! Mollitia impedit reprehenderit
-        error dolore deserunt doloribus eveniet minima magnam fuga. Voluptates,
-        ipsam. Laborum velit necessitatibus modi recusandae iure commodi
-        delectus ullam maxime, eligendi perferendis ratione distinctio atque
-        aliquid nostrum voluptatem dignissimos veritatis a accusamus quaerat,
-        deleniti consequatur itaque? Odio reiciendis repellendus laudantium
-        maiores dolores deleniti debitis tempora commodi et aliquid repellat
-        labore atque, assumenda amet, minus quis! A quae aut debitis!
-        Perspiciatis perferendis cumque in eos deleniti facilis veritatis nemo
-        at! Dicta consequuntur cupiditate ipsam quia! Id voluptas nisi,
-        obcaecati rem quos eveniet qui! Id quaerat reiciendis necessitatibus,
-        placeat quis sequi accusantium aperiam quae officiis ipsa minus
-        accusamus quasi excepturi error iure ex, distinctio, perspiciatis animi
-        maiores eaque mollitia totam commodi!
-      </p>
+      {/* create an article component then generate them with a map or something!!! */}
+    <div className="article-list">
+      {Articles.List.map((article, key) => (
+        <div className="article-item" key={key }>
+          <img src={require(`../images/${article.Image}.png`)} alt ="stuff" className="img-thumbnail rounded article-thumbnail-image"></img>
+          <div>
+            <h3>{article.ArticleHeading}</h3>
+            <p>Type: <span className="article-type">{article.Type}</span></p>
+            <p>{article.Content.substring(0,200)}... <Link to={`/articles/${article.Url}`}>Read More <FontAwesomeIcon icon={faArrowRight} /></Link></p>
+          </div>
+        </div>        
+      ))}
     </div>
-  </>
+    </div>
 );
 
 export default ArticlesListPage;

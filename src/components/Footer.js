@@ -18,8 +18,6 @@ const Footer = () => (
           >
             Knight icons created by max.icons - Flaticon
           </a>
-          <br />
-          <a target="_blank" href="https://icons8.com/icon/10601/radar" rel="noreferrer">Radar</a> icon by <a target="_blank" href="https://icons8.com" rel="noreferrer">Icons8</a>
         </div>
         <div className="col">Column</div>
         <div className="col">Column</div>

@@ -1,5 +1,5 @@
 import React from "react";
-import tools from '../data/tools.json'
+import tools from '../data/tools.json';
 import PageNotFound from "./PageNotFound";
 import { useParams } from "react-router-dom";
 import { getResult } from "../components/GetResults";

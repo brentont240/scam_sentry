@@ -2,12 +2,30 @@
     "List": [
       {
         "Id": 0,
-        "Name": "",
-        "Image": "",
-        "ArticleHeading": "",
+        "Image": "advanced-fee-img",
+        "ArticleHeading": "Advanced Fee Scam",
         "ArticleSubHeading": "",
-        "Content": "",
-        "Url": ""
+        "Type": "Email",
+        "Content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptasLorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptasLorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptas",
+        "Url": "test-1"
+      },
+      {
+        "Id": 1,
+        "Image": "refund-scam-img",
+        "ArticleHeading": "Refund Scam",
+        "ArticleSubHeading": "",
+        "Type": "Phone",
+        "Content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptasLorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptasLorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptas",
+        "Url": "test-2"
+      },
+      {
+        "Id": 2,
+        "Image": "mlm-img",
+        "ArticleHeading": "Multi-level Marketing",
+        "ArticleSubHeading": "Legal pyramid schemes",
+        "Type": "test category",
+        "Content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptasLorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptasLorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptas",
+        "Url": "mlm"
       }
     ]
 }

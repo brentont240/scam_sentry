@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import ArticlesListPage from "./pages/ArticlesListPage";
 import ToolsListPage from "./pages/ToolsListPage";
 import ToolsPage from "./pages/ToolPage";
+import ArticlesPage from "./pages/ArticlesPage";
 import Footer from "./components/Footer";
 import PageNotFound from "./pages/PageNotFound";
 
@@ -31,6 +32,7 @@ function App() {
           <Route path="/articles-list" element={<ArticlesListPage />} />
           <Route path="/tools-list" element={<ToolsListPage />} />
           <Route path="/tools/:url" element={<ToolsPage />} />
+          <Route path="/articles/:url" element={<ArticlesPage />} />
           <Route path="*" element={<PageNotFound />}/> {/* use path="*" to catch any page that is not specified!*/}
         </Routes>
       </main>

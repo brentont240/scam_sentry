@@ -3,24 +3,27 @@
       {
         "Id": 0,
         "Image": "advanced-fee-img",
+        "ImageAlt": "",
         "ArticleHeading": "Advanced Fee Scam",
         "ArticleSubHeading": "",
         "Type": "Email",
-        "Content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptasLorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptasLorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptas",
-        "Url": "test-1"
+        "Content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptasLorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptasLorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, <h2>nihil expedita dolorem!</h2> Necessitatibus maxime soluta voluptas <a href=\"/tools/email-detector\"> test Link</a>",
+        "Url": "advanced-fee-scam"
       },
       {
         "Id": 1,
         "Image": "refund-scam-img",
+        "ImageAlt": "",
         "ArticleHeading": "Refund Scam",
         "ArticleSubHeading": "",
         "Type": "Phone",
         "Content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptasLorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptasLorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptas",
-        "Url": "test-2"
+        "Url": "refund-scam"
       },
       {
         "Id": 2,
         "Image": "mlm-img",
+        "ImageAlt": "",
         "ArticleHeading": "Multi-level Marketing",
         "ArticleSubHeading": "Legal pyramid schemes",
         "Type": "test category",

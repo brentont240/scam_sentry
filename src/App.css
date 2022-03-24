@@ -206,18 +206,37 @@ footer a:hover{
 
 .article-thumbnail-image{
   max-width: 400px;
-  width: 100%;
+  width: 400px;
   height: auto;
+  display: block;
+  -webkit-transition: opacity ease-in-out 0.3s;
+  -moz-transition: opacity ease-in-out 0.3s;
+  transition: opacity ease-in-out 0.3s;
+}
+
+.article-thumbnail-image:hover{
+  opacity: 75%;
+  cursor: pointer;
 }
 
 /* change flex direction to column and center images on smaller screens */
+/* TODO: May want to update the screen size for this!!! */
 @media only screen and (max-width: 770px){
   .article-item{
     flex-direction: column;
+    /* TODO: DECREASE THE GAP ON MOBILE */
   }
   .article-item img{
     margin: auto;
   }
+  .article-thumbnail-image{
+    width: 100%;
+    /* margin: auto; */
+  }
+  .article-details{
+    margin-top: -25px;
+  }
+  
 }
 
 .article-item{

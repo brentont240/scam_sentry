@@ -26,9 +26,19 @@
         "ImageAlt": "",
         "ArticleHeading": "Multi-level Marketing",
         "ArticleSubHeading": "Legal pyramid schemes",
-        "Type": "test category",
+        "Type": "Business opportunity",
         "Content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptasLorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptasLorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptas",
         "Url": "mlm"
+      },
+      {
+        "Id": 3,
+        "Image": "fake-guru-img",
+        "ImageAlt": "",
+        "ArticleHeading": "Fake Gurus",
+        "ArticleSubHeading": "Selling a dream, but it's really just a get rich quick scheme",
+        "Type": "Business opportunity, get rich quick scheme",
+        "Content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptasLorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptasLorem, ipsum dolor sit amet consectetur adipisicing elit. Minus veniam reiciendis sequi ratione, minima exercitationem sit blanditiis cum dolorum earum esse magnam molestias, nihil expedita dolorem! Necessitatibus maxime soluta voluptas",
+        "Url": "fake-guru"
       }
     ]
 }

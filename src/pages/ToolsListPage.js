@@ -9,7 +9,7 @@ import { faEnvelope, faGlobe, faPhone, faUserTie, faBitcoinSign, faArrowRight, f
 const ToolsListPage = () => (
     <div className="container">
     <span className="text-center">
-        <h1 className="pt-4">Tools</h1>
+        <h1 className="pt-4  display-4">Tools</h1>
     </span>
     
       {/* put some information about the tools here? */}

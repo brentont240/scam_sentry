@@ -84,6 +84,10 @@ main {
   color: white;
 }
 
+.text-shadow{
+  text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
+}
+
 /* use a different color for the footer? */
 footer {
   background-color: var(--dark-grey);
@@ -233,7 +237,7 @@ footer a:hover{
 
 /* change flex direction to column and center images on smaller screens */
 /* TODO: May want to update the screen size for this!!! */
-@media only screen and (max-width: 770px){
+@media only screen and (max-width: 990px){
   .article-item{
     flex-direction: column;
     /* TODO: DECREASE THE GAP ON MOBILE */
@@ -266,4 +270,3 @@ footer a:hover{
   max-height: 600px;
   max-width: 100%;
 }
-

@@ -64,8 +64,8 @@ const Home = () => (
           <div className="col-md-6">
             <div className="card secondary-bg w-color h-100" id="articles">
               <div className="card-body">
-              <h1><FontAwesomeIcon icon={faNewspaper} /> Articles </h1>
-                <p className="card-text">
+              <h1 className="text-shadow"><FontAwesomeIcon icon={faNewspaper} /> Articles </h1>
+                <p className="card-text text-shadow">
                 Want to learn more about different kinds of scams? Scam Sentry's articles go into detail about specific scams. Learn how a specific scam works and what it looks like, so you can identify it when it comes up in the future. Also learn what to do and what not do to when coming across these situations. Click the button below to visit the articles page and learn about different scams.
                 </p>
                 <div className="mt-auto d-flex flex-row justify-content-center">

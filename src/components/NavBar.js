@@ -25,7 +25,7 @@ const NavBar = () => (
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div className="collapse navbar-collapse text-center" id="navbarNavAltMarkup">
         {/* see where a good place to position this would be */}
         <div className="navbar-nav ms-auto mb-2 mb-lg-0">
           <NavLink className="nav-link" aria-current="page" onClick={closeMenu} to="/">

@@ -49,8 +49,8 @@ export const getResult = async (id) => {
         if(countWords(input) < 5){
             window.scrollTo(0, 0,);
             resultsSection.innerHTML = `<div class="alert alert-danger">
-            <h1>Error: Not enough words</h1>
-            <p>Please enter more than 5 words into the input field below.</p>
+            <h1>Error: Input too short</h1>
+            <p>Please enter at least 5 words into the input field below.</p>
             </div>`;
             return;
         }
@@ -61,16 +61,17 @@ export const getResult = async (id) => {
     } else if(id===2){ 
         // phone
         const phoneOptions = {
-            method: 'POST',
+            method: 'POST'
         }
         // TODO: undo this when done testing!!!
         getAPI = await fetch('http://apilayer.net/api/validate?access_key='+PHONE_API_KEY+'&number='+input , phoneOptions)
         const results = await getAPI.json();
+        console.log(results);
         // for testing
         // const results = {
         //     "valid": true,
         //     "line_type": "mobile",
-        //     "carrier": "t-mobile"
+        //     "carrier": ""
         // }
         displayResults(results, id);
     } else if(id===3){
@@ -171,7 +172,7 @@ function emailResults(results, resultsSection){
             } else{
             resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
             <h2>${info_icon}No scam detected</h2>
-            <p>No scam was detected. There is a good chance that this email is safe.</p>
+            <p>No scam was detected in this email.</p>
             <p><b>Note:</b> This email is short so there may not be enough information to determine whether it is a scam or not. If the email promises a large sum of money, a prize, or an incredible opportunity, it is a scam. 
             Remember if it sounds too good to be true, it probably is. If you believe this is a scam, it is best to cease all contact with the scammer. Do not send money or personal information to strangers over the internet.</p>
             </div>`;
@@ -180,6 +181,7 @@ function emailResults(results, resultsSection){
 }
 
 // function used to count words in the input field
+// used for the email scam detector, as it needs a certain number of words to detect a scam.
 function countWords(input) {
     return input.split(' ')
            .filter(function(n) { return n !== '' })
@@ -262,7 +264,7 @@ function phoneResults(results, resultsSection){
 
             <section class="question-3 hidden">
             <br />
-            <p>Was this number found from a popup or email claiming you have a virus or claiming you won something?</p>
+            <p>Was this number found from a popup or email claiming that you have a virus or that you won something?</p>
             <div class="form-check">
             <input class="form-check-input" type="radio" name="popup" id="popup_yes"  value="yes"/>
             <label class="form-check-label" for="popup_yes">Yes</label>

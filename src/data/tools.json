@@ -35,7 +35,7 @@
         "Url": "phone-detector",
         "InputFieldType": "",
         "InputPlaceholderText": "Ex: 1-123-456-7890 or 11234567890",
-        "InputType": "",
+        "InputType": "tel",
         "ButtonText": "Scan Number",
         "IsExternal": false
       },

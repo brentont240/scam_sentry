@@ -45,6 +45,15 @@ export const getResult = async (id) => {
     let getAPI ="";
     if(id===0){
         // email
+        // show error if the input is less than 5 words
+        if(countWords(input) < 5){
+            window.scrollTo(0, 0,);
+            resultsSection.innerHTML = `<div class="alert alert-danger">
+            <h1>Error: Not enough words</h1>
+            <p>Please enter more than 5 words into the input field below.</p>
+            </div>`;
+            return;
+        }
         getAPI = await fetch('https://scam-sentry-backend.herokuapp.com/email-detector', options);
         const results = await getAPI.json();
         // TODO: BETTER DESCRIPTIONS FOR SHORT EMAILS THAT ARENT IDENTIFIED AS SCAMS!
@@ -168,6 +177,13 @@ function emailResults(results, resultsSection){
             </div>`;
             }
     }
+}
+
+// function used to count words in the input field
+function countWords(input) {
+    return input.split(' ')
+           .filter(function(n) { return n !== '' })
+           .length;
 }
 
 // TODO: ADD LINK TO THE FTC REPORTING THING SO THEY CAN REPORT THIS

@@ -80,7 +80,7 @@ export const getResult = async (id) => {
             method: 'POST'
         }
         // TODO: undo this when done testing!!!
-        getAPI = await fetch('http://apilayer.net/api/validate?access_key='+PHONE_API_KEY+'&number='+input , phoneOptions);
+        getAPI = await fetch('https://allow-cors.herokuapp.com/http://apilayer.net/api/validate?access_key='+PHONE_API_KEY+'&number='+input , phoneOptions);
         const results = await getAPI.json();
         // for testing
         // const results = {

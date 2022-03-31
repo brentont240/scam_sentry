@@ -76,11 +76,11 @@ export const getResult = async (id) => {
             </div>`;
             return;
         }
-        // const phoneOptions = {
-        //     method: 'POST'
-        // }
+        const phoneOptions = {
+            method: 'POST'
+        }
         // TODO: undo this when done testing!!!
-        getAPI = await fetch('http://apilayer.net/api/validate?access_key='+PHONE_API_KEY+'&number='+input)
+        getAPI = await fetch('http://apilayer.net/api/validate?access_key='+PHONE_API_KEY+'&number='+input , phoneOptions);
         const results = await getAPI.json();
         // for testing
         // const results = {

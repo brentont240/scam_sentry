@@ -68,7 +68,6 @@ export const getResult = async (id) => {
             <p>Please enter a phone number using one of these formats:</p>
             <ul>
             <li>11234567890</li>
-            <li>1 123 456 7890</li>
             <li>1-123-456-7890</li>
             <li>+1-123-456-7890</li>
             <li>+1 (123) 456-7890</li>
@@ -77,11 +76,11 @@ export const getResult = async (id) => {
             </div>`;
             return;
         }
-        const phoneOptions = {
-            method: 'POST'
-        }
+        // const phoneOptions = {
+        //     method: 'POST'
+        // }
         // TODO: undo this when done testing!!!
-        getAPI = await fetch('http://apilayer.net/api/validate?access_key='+PHONE_API_KEY+'&number='+input , phoneOptions)
+        getAPI = await fetch('http://apilayer.net/api/validate?access_key='+PHONE_API_KEY+'&number='+input)
         const results = await getAPI.json();
         // for testing
         // const results = {

@@ -65,9 +65,10 @@ export const getResult = async (id) => {
             // TODO: do I want to show the user information about the phone number?
             resultsSection.innerHTML = `<div class="alert alert-danger">
             <h1>Error: Invalid phone number</h1>
-            <p>Please enter a phone number, using one of these formats:</p>
+            <p>Please enter a phone number using one of these formats:</p>
             <ul>
             <li>11234567890</li>
+            <li>1 123 456 7890</li>
             <li>1-123-456-7890</li>
             <li>+1-123-456-7890</li>
             <li>+1 (123) 456-7890</li>
@@ -80,7 +81,7 @@ export const getResult = async (id) => {
             method: 'POST'
         }
         // TODO: undo this when done testing!!!
-        getAPI = await fetch('http://apilayer.net/api/validate?access_key='+PHONE_API_KEY+'&number='+input , phoneOptions)
+        getAPI = await fetch('https://apilayer.net/api/validate?access_key='+PHONE_API_KEY+'&number='+input , phoneOptions)
         const results = await getAPI.json();
         // for testing
         // const results = {

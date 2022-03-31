@@ -1,6 +1,7 @@
 // need to put REACT_APP in front of the environment variables
 
 const PHONE_API_KEY = process.env.REACT_APP_PHONE_KEY;
+const FIX_API = process.env.REACT_APP_FIX_API;
 
 // https://getbootstrap.com/docs/5.0/components/alerts/ for more alert icons!
 const warning_icon = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2 icon-margin" viewBox="0 0 16 16" role="img" aria-label="Warning:">
@@ -80,7 +81,8 @@ export const getResult = async (id) => {
             method: 'POST'
         }
         // TODO: undo this when done testing!!!
-        getAPI = await fetch('https://allow-cors.herokuapp.com/http://apilayer.net/api/validate?access_key='+PHONE_API_KEY+'&number='+input , phoneOptions);
+        // need to go through another url to fix issue with mixed content
+        getAPI = await fetch(FIX_API+'http://apilayer.net/api/validate?access_key='+PHONE_API_KEY+'&number='+input , phoneOptions);
         const results = await getAPI.json();
         // for testing
         // const results = {
@@ -99,7 +101,7 @@ export const getResult = async (id) => {
         // TODO: change this
         getAPI = await fetch('https://scam-sentry-backend.herokuapp.com/mlm-detector', options); 
         const results = await getAPI.json();
-        console.log(results);
+        // console.log(results);
         displayResults(results, id);  
     }
 
@@ -235,13 +237,8 @@ function guruResults(results, resultsSection){
     }
 }
 
-// TODO:
-// TODO: 
-// TODO:
-// TODO:
-// TODO: MAKE IT SO THAT IT AUTO FORMATS THE PHONE NUMBER OR CHECKS IT SO THEY CAN'T UNPUT IT WRONG
 function phoneResults(results, resultsSection){
-    console.log(results);   
+    // console.log(results);   
     if (results.success === false){
         resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
         <h2>${warning_icon}Error with phone detector!</h2>

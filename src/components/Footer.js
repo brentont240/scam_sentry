@@ -39,13 +39,13 @@ const Footer = () => (
         <div className="col">
           <h4>Useful Links</h4>
           <ul className="list-group list-unstyled">
-            <li>
+            <li className="mb-1">
               <a href="https://www.usa.gov/stop-scams-frauds"  rel="noreferrer" target="_blank">Learn how to report scams here.</a> 
             </li>
-            <li>
+            <li className="mb-1">
               <a href="https://www.fbi.gov/scams-and-safety/common-scams-and-crimes"  rel="noreferrer" target="_blank">The FBI's list of common scams and crimes.</a> 
-            </li>
-            <li>
+            </li> 
+            <li className="mb-1">
             <a href="https://www.bbb.org/scamtracker/"  rel="noreferrer" target="_blank">See scams near you with the Better Business Bureau's Scam Tracker.</a>
             </li>
           </ul>

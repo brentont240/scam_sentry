@@ -60,13 +60,28 @@ export const getResult = async (id) => {
         displayResults(results, id);    
     } else if(id===2){ 
         // phone
+        if(!isValidPhone(input)){
+            window.scrollTo(0, 0,);
+            // TODO: do I want to show the user information about the phone number?
+            resultsSection.innerHTML = `<div class="alert alert-danger">
+            <h1>Error: Invalid phone number</h1>
+            <p>Please enter a phone number, using one of these formats:</p>
+            <ul>
+            <li>11234567890</li>
+            <li>1-123-456-7890</li>
+            <li>+1-123-456-7890</li>
+            <li>+1 (123) 456-7890</li>
+            </ul>
+            <p>Include <b>both</b> the country and area code in the number.</p>
+            </div>`;
+            return;
+        }
         const phoneOptions = {
             method: 'POST'
         }
         // TODO: undo this when done testing!!!
         getAPI = await fetch('http://apilayer.net/api/validate?access_key='+PHONE_API_KEY+'&number='+input , phoneOptions)
         const results = await getAPI.json();
-        console.log(results);
         // for testing
         // const results = {
         //     "valid": true,
@@ -113,6 +128,23 @@ function displayResults(results, id){
         default:
             return emailResults(results, resultsSection);
     }
+}
+
+// function used to count words in the input field
+// used for the email scam detector, as it needs a certain number of words to detect a scam.
+function countWords(input) {
+    return input.split(' ')
+           .filter(function(n) { return n !== '' })
+           .length;
+}
+
+// function used to see if the phone number inputted is in a valid format
+function isValidPhone(phoneNum){
+    // remove spaces, +'s, -, and parenthesis from the input (the api ignores these)
+    let phoneNumber = phoneNum.replace(/[+()"  *"-]/g, '').trim();
+    const phoneFormat = /[0-9]{11}/g;
+    // check that the format is 11 numbers and that the length is 11
+    return (phoneNumber.match(phoneFormat) && phoneNumber.length === 11 ? true : false);
 }
 
 function emailResults(results, resultsSection){
@@ -180,14 +212,6 @@ function emailResults(results, resultsSection){
     }
 }
 
-// function used to count words in the input field
-// used for the email scam detector, as it needs a certain number of words to detect a scam.
-function countWords(input) {
-    return input.split(' ')
-           .filter(function(n) { return n !== '' })
-           .length;
-}
-
 // TODO: ADD LINK TO THE FTC REPORTING THING SO THEY CAN REPORT THIS
 function guruResults(results, resultsSection){
     const matchFound = results.matchFound;
@@ -226,8 +250,8 @@ function phoneResults(results, resultsSection){
     if(results.valid === false){
         // TODO: put some instructions here!
         resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
-        <h2>${warning_icon}Invalid number!</h2>
-        <p>Either the phone number was inputted wrong or this is not a valid phone number.</p>
+        <h2>${warning_icon}Invalid number detected!</h2>
+        <p>This number was detected as being an invalid phone number. This could mean that this phone number is a scam.</p>
         </div>`;
         return;
     }

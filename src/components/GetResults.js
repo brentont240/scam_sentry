@@ -12,6 +12,10 @@ const info_icon = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25
 <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
 </svg>`;
 
+const check_icon = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="info-fill flex-shrink-0 me-2 icon-margin" viewBox="0 0 16 16" role="img" aria-label="Info:">
+<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+</svg>`;
+
 // used to get the results on the tools page
 export const getResult = async (id) => {
     // TODO: maybe reset the results section when the button is click, so the user knows that the results will be for the new input!!!
@@ -222,7 +226,23 @@ function guruResults(results, resultsSection){
     if (!matchFound || (websiteMatch == null && guruMatch == null)){
         resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
         <h2>${info_icon}No known fake guru or fake guru related (get rich quick scheme) website detected</h2>
+        <p>If you would like to submit a request for a fake guru / fake guru related (get rich quick scheme) website, please fill out this form:</p>
+        <form class="guru form">
+        <p>Please include at least one of the following:</p>
+        <label for="guru-name" class="form-label">Guru name (first and last):</label>
+        <input type="text" class="form-control guru-input" name="guru-name" id="guru-name" placeholder="John Smith" default=""/>
+        <br /> 
+        <label for="website" class="form-label">Website:</label>
+        <input type="text" class="form-control guru-input" name="website" id="website" placeholder="example.com" default=""/>
+        <br />
+        <button class="btn btn-success" id="submit-guru">Submit request</button>
+        </form>
         </div>`;
+
+        document.querySelector('#submit-guru').addEventListener('click', (e) => {
+            e.preventDefault();
+            submitGuruRequest();
+        });
         return;
     } else if(guruMatch != null){
         resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
@@ -410,6 +430,62 @@ function mlmResults(results, resultsSection){
     }
 }
 
+
+async function submitGuruRequest(){
+    const website = document.querySelector('#website').value;
+    const guru_name = document.querySelector('#guru-name').value;
+
+    let resultsSection = document.querySelector('#results');
+
+    if(website === "" && guru_name === ""){
+        resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
+        <h2>${warning_icon}Error: Please enter either a guru name or a website</h2>
+        <p>If you would like to submit a request for a fake guru / fake guru related (get rich quick scheme) website, please fill out this form:</p>
+        <form class="guru form">
+        <p><b>Please include at least one of the following:</b></p>
+        <label for="guru-name" class="form-label">Guru name (first and last):</label>
+        <input type="text" class="form-control guru-input" name="guru-name" id="guru-name" placeholder="John Smith" default=""/>
+        <br /> 
+        <label for="website" class="form-label">Website:</label>
+        <input type="text" class="form-control guru-input" name="website" id="website" placeholder="example.com" default=""/>
+        <br />
+        <button class="btn btn-success" id="submit-guru">Submit request</button>
+        </form>
+        </div>`;
+        document.querySelector('#submit-guru').addEventListener('click', (e) => {
+            e.preventDefault();
+            submitGuruRequest();
+        });
+        return;
+    }
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({website: website, guru_name: guru_name})
+    }
+
+    const getAPI = await fetch('https://scam-sentry-backend.herokuapp.com/request-guru', options);
+    const response = await getAPI.json();
+    if(getAPI.ok){
+        window.scrollTo(0, 0,);
+        resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
+        <h2>${check_icon}Request submitted successfully</h2>
+        <p>Your request has been successfully submitted. We will look into this request as soon as possible.</p>
+        </div>`
+        return;
+    } else {
+        window.scrollTo(0, 0,);
+        resultsSection.innerHTML = `<div class="alert alert-danger">
+        <h1>${response.message}</h1>
+        <p>${response.errorBody}</p>
+        </div>`;
+        return;
+    }
+}
 
 // old phone not scam text:
 // eslint-disable-next-line no-lone-blocks

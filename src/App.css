@@ -270,3 +270,7 @@ footer a:hover{
   max-height: 600px;
   max-width: 100%;
 }
+
+.guru-input{
+  max-width: 500px;
+}

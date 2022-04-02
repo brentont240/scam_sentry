@@ -36,7 +36,7 @@ const Home = () => (
         <li>If anyone asks for payment in gift card, bitcoin, or wire transfer service like Western Union or MoneyGram, it is probably a scam.</li>
         <li>If you come across something that says it is urgent, don't panic. Take time to think and examine it more closely. It is easier for you to be scammed if you panic.</li>
         <li>If someone threatens you in any way it is probably a scam. For example, if someone threatens to shut down your account or charge you with a large fee unless you pay them money, it is probably a scam. A reputable company will not threaten you.</li>
-        <li>If you receive a message that has a lot of grammatical and spelling errors and/or is written in all capital letters, it may be a scam. An official company email will not be filled with typos, and will be professionally written.</li>
+        <li>If you receive a message that has a lot of grammatical and spelling errors and/or is written in all capital letters, it may be a scam. An official company email will not be filled with typos, unprofessional fonts, threats, swear words, or demands for money. It be professionally written and formatted.</li>
       </ul>
       <p>To learn more about scams and how to know if something is a scam or not, read more about our tools and articles below:</p>
     </div>

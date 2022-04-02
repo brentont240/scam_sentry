@@ -38,7 +38,7 @@ const ToolsPage = () => {
     return ( 
        <div className="container">
         <h1 className="pt-4">{tool.Name}</h1>
-        <div dangerouslySetInnerHTML={ {__html: tool.BodyText} }></div>
+        <p>{tool.BodyText}</p>
         <section id="results"></section>
             <form>
             {inputAndButton}

@@ -193,7 +193,7 @@ function emailResults(results, resultsSection){
             resultsSection.innerHTML = `<div class="alert alert-warning" role="alert">
             <h2>${warning_icon}Possible scam detected</h2>
             <p>This email could possibly be a scam; however, there were not enough similarities to scam emails found to determine that it is.</p>
-            <p><b>Note:</b> This email is short so there may not be enough information to determine whether it is a scam or not. If the email promises a large sum of money, a prize, or an incredible opportunity, it is a scam. 
+            <p><b>Note:</b> This email is short, so there may not be enough information to determine whether it is a scam or not. If the email promises a large sum of money, a prize, or an incredible opportunity, it is a scam. 
             Remember if it sounds too good to be true, it probably is. If you believe this is a scam, it is best to cease all contact with the scammer. Do not send money or personal information to strangers over the internet.</p>
             </div>`;
             return;
@@ -211,7 +211,7 @@ function emailResults(results, resultsSection){
             resultsSection.innerHTML = `<div class="alert alert-success" role="alert">
             <h2>${info_icon}No scam detected</h2>
             <p>No scam was detected in this email.</p>
-            <p><b>Note:</b> This email is short so there may not be enough information to determine whether it is a scam or not. If the email promises a large sum of money, a prize, or an incredible opportunity, it is a scam. 
+            <p><b>Note:</b> This email is short, so there may not be enough information to determine whether it is a scam or not. If the email promises a large sum of money, a prize, or an incredible opportunity, it is a scam. 
             Remember if it sounds too good to be true, it probably is. If you believe this is a scam, it is best to cease all contact with the scammer. Do not send money or personal information to strangers over the internet.</p>
             </div>`;
             }

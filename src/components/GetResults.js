@@ -239,6 +239,7 @@ function guruResults(results, resultsSection){
 
 function phoneResults(results, resultsSection){
     // console.log(results);   
+    window.scrollTo(0, 0,);
     if (results.success === false){
         resultsSection.innerHTML = `<div class="alert alert-danger" role="alert">
         <h2>${warning_icon}Error with phone detector!</h2>

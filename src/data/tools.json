@@ -4,7 +4,7 @@
         "Id": 0,
         "Name": "Scam Email Detector",
         "Icon": "envelope",
-        "Description": "This tool detects if an email is a scam or not.",
+        "Description": "This tool goes through the contents of an email to detect if the email is a scam or not.",
         "BodyText": "This tool will detect if an email is a scam or not. To use this tool, copy the contents of the suspected email and paste them into the box below, then click the \"Scan Email\" button.",
         "Url": "email-detector",
         "InputFieldType": "",
